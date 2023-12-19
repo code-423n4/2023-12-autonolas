@@ -86,7 +86,7 @@ The following folders containing audit-related materials associated with develop
 The following are relevant for governance related contracts: 
 
 - [Summary of governance model](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Governance_process.pdf) 
-- [Cross-chain governance design](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/governance_bridge.pdf) 
+- [Cross-chain governance design](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Governance_process.pdf) 
 - [Bridging token created natively on Polygon to Ethereum and motivations](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Bonding_mechanism_with_Polygon_LP_token.pdf)
 - [GuardCM design and updates](https://github.com/valory-xyz/autonolas-aip/blob/aip-3/content/aips/core-enhancing-autonolas-protocol-security.md) 
 
@@ -97,7 +97,7 @@ The following are relevant for registries related contracts:
 
 The following are relevant for tokenomics related contract:
 
-- [Summary of tokenomics model](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokeomics/docs/Autonolas_tokenomics_audit.pdf) 
+- [Summary of tokenomics model](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Autonolas_tokenomics_audit.pdf) 
 - [Autonolas tokenomics paper](https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf)
 - [Autonolas whitepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf) 
 - Uniswap-v2 like pairs can be used for the depository contract, [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokeomics/docs/LP_token_guide.md ) an illustrative guide 
