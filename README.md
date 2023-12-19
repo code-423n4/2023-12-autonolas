@@ -79,7 +79,7 @@ The following folders containing audit-related materials associated with develop
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/tokemomics/audits 
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/audits 
 
-- **Documentation:** (ADJUST LINKS)
+- **Documentation:**
 
 [Autonolas whitepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf)  
 
@@ -331,7 +331,7 @@ The following are relevant for tokenomics related contract:
   -  [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)
 
 - @solana/blob/master/tokens/src/spl_token.rs
-  - lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)  
+  - [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)  
 
 
 ## Scoping Details 
