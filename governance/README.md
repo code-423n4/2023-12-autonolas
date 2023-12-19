@@ -20,7 +20,7 @@ An overview of the design is provided [here](https://github.com/valory-xyz/auton
 - [GovernorOLAS](https://github.com/valory-xyz/autonolas-governance/blob/main/contracts/GovernorOLAS.sol);
 - [Timelock](https://github.com/valory-xyz/autonolas-governance/blob/main/contracts/Timelock.sol).
 
-For team incentivisation we have a burnable locked `OLAS` token - `buOLAS`:
+For team incentivization we have a burnable locked `OLAS` token - `buOLAS`:
 - [buOLAS](https://github.com/valory-xyz/autonolas-governance/blob/main/contracts/buOLAS.sol).
 
 In order to deploy OLAS and veOLAS contracts via the create2() method, the following contract is utilized for vanity addresses:
@@ -81,7 +81,7 @@ npm run fork
 
 ### Docker
 
-If you are running using amd64 (eg. Mac M1), please export the newly build image from the docker-build image.
+If you are running using amd64 (e.g. Mac M1), please export the newly built image from the docker-build image.
 You can find more information [here](https://docs.docker.com/build/building/multi-platform/).
 ```
 docker buildx create --name amdBuilder --driver docker-container --bootstrap
@@ -108,8 +108,8 @@ docker run -p 8545:8545 -it valory/autonolas-governance:dev
 - [`solhint`](https://github.com/protofire/solhint) is used for Solidity linting.
 
 
-### Github Workflows
-The PR process is managed by github workflows, where the code undergoes
+### GitHub Workflows
+The PR process is managed by GitHub Workflows, where the code undergoes
 several steps in order to be verified. Those include:
 - code installation
 - running linters
