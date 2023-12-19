@@ -7,7 +7,7 @@ async function main() {
     const actualBytecode = json["bytecode"];
     const initHash = hre.ethers.utils.keccak256(actualBytecode);
     const initHashReplace = initHash.slice(2);
-    return initHashReplace;
+    console.log(initHashReplace);
 }
 
 main()
