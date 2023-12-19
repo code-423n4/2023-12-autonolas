@@ -271,12 +271,68 @@ the proposal executions. | [`@openzeppelin/*`](https://openzeppelin.com/contract
 
 ## Out of scope
 
-*List any files/contracts that are out of scope for this audit.*
+## Out of scope
 
+| File | SLOC | Purpose | Libraries used |  
+| ----------- | ----------- | ----------- | ----------- |
+| Governance contracts (11) | | | |
+| [governance/contracts/test/BridgeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/test/BridgeSetup.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/test/BrokenERC20.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/test/BrokenERC20.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/test/SafeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/test/SafeSetup.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/multisigs/test/MockTimelockCM.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/multisigs/test/MockTimelockCM.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/multisigs/test/MockTreasury.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/multisigs/test/MockTreasury.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/ChildMockERC20.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/brides/test/ChildMockERC20.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/FxChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/brides/test/FxChildTunnel.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/FxRootMock.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/brides/test/FxRootMock.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/HomeMediatorTest.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/brides/test/HomeMediatorTest.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/MockAMBMediator.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/brides/test/MockAMBMediator.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/MockTimelock.sol](https://github.com/code-423n4/2023-12-autonolas/governance/contracts/brides/test/MockTimelock.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| Registries contracts (3) | | | |
+| [registries/contracts/test/ComponentRegistryTest.sol](https://github.com/code-423n4/2023-12-autonolas/registries/contracts/test/ComponentRegistryTest.sol]) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [registries/contracts/test/GnosisSafeABICreator.sol](https://github.com/code-423n4/2023-12-autonolas/registries/contracts/test/GnosisSafeABICreator.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [registries/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/registries/contracts/test/ReentrancyAttacker.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| Tokenomics contracts (10) | | | |
+| [tokenomics/contracts/test/DepositAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/DepositAttacker.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/ERC20Token.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/ERC20Token.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/MockRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/MockRegistry.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/MockTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/MockTokenomics.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/MockVE.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/MockVE.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/ReentrancyAttacker.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/TestTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/TestTokenomics.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/UniswapFactory.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/UniswapFactory.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/UniswapRouter.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/UniswapRouter.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/Zuniswapv2.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/contracts/test/Zuniswapv2.sol) |  | | |
+| ----------- | ----------- | ----------- | ----------- |
 | Lockbox Solana (1) | | | |
 | ----------- | ----------- | ----------- | ----------- |
 | [lockbox-solana/solidity/test_position.sol](https://github.com/code-423n4/2023-12-autonolas/lockbox-solana/solidity/test_position.sol) |  | | |
 | ----------- | ----------- | ----------- | ----------- |
+
+
+
 
 # External imports
 
