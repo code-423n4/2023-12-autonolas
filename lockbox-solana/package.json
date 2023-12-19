@@ -1,0 +1,24 @@
+{
+    "scripts": {
+        "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
+        "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check"
+    },
+    "dependencies": {
+        "@coral-xyz/anchor": "^0.29.0"
+    },
+    "devDependencies": {
+        "chai": "^4.3.4",
+        "mocha": "^9.0.3",
+        "ts-mocha": "^10.0.0",
+        "@types/bn.js": "^5.1.0",
+        "@types/chai": "^4.3.0",
+        "@types/mocha": "^9.0.0",
+        "typescript": "^4.3.5",
+        "prettier": "^2.6.2",
+        "@solana/spl-token": "0.3.8",
+        "@orca-so/whirlpools-sdk": "^0.11.4",
+        "@orca-so/common-sdk": "^0.3.3",
+        "decimal.js": "^10.3.1",
+        "expect": "^29.7.0"
+    }
+}
