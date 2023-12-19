@@ -23,19 +23,13 @@ Automated findings output for the audit can be found [here](https://github.com/c
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
-<<<<<<< Updated upstream
+
 The known issues (some of them intended by design) that are not in scope for this audit are outlened in the following: (ADJUST LIKS)
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Vulnerabilities_list_governance.pdf 
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/registies/docs/Vulnerabilities_list_registries.pdf  
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Vulnerabilities_list_tokenomisc.pdf  
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Vulnerabilities_list_tokenomics-solana.pdf 
-=======
-The known issues (some of them intended by design) that are not in scope for this audit are outlined in the following: (ADJUST LIKS)
-- https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Vulnerabilities_list_governance.pdf 
-- https://github.com/valory-xyz/autonolas-registries/blob/pre-c4a/docs/Vulnerabilities_list_registries.pdf  
-- https://github.com/valory-xyz/autonolas-tokenomics/blob/pre-c4a/docs/Vulnerabilities_list_tokenomics.pdf  
-- https://github.com/valory-xyz/autonolas-tokenomics-solana/blob/main/docs/Vulnerabilities_list_tokenomics-solana.pdf 
->>>>>>> Stashed changes
+
 
 :warning: **Warning** <br /> 
 
@@ -51,20 +45,20 @@ The `withdraw()` function testing is wrapped into a `try-catch` logic.
 This audit is focused on parts of the Autonolas protocol. The protocol can be divided in three main parts: governance, registries, and tokenomics. Here is an overview of these parts. 
 
 The **governance** is designed to assume various control points to steer the Autonolas protocol. The veOLAS virtualized claim on OLAS
-Governance keys components are: a governance module (ADDREF), a Timelock (ADDREF), veOLAS (ADDREF). These components allow the community to propose, vote on, and implement changes. The governance token, veOLAS is the virtualized representation of OLAS locked and used a similar approach to veCRV, where votes are weighted depending on the time OLAS is locked other than the amount of locked OLAS. The maximum voting power for a fixed amount of locked OLAS can be achieved with the longest lock. In mathematical terms, voting power is calculated as amount * time_locked / MAXTIME. An overview of the governance process can be found [here](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Governance_process.pdf). While the OLAS token is a tradable utility token that will provide access to the core functionalities of the Autonolas project. The token follows the ERC20 standard and is deployed on the Ethereum mainnet. The token has an inflationary model to account for the economic primitives enabled by Autonolas tokenomics, e.g., bonding mechanism and OLAS top-up to boost developers' incentives (cf. OLAS token section [here](https://github.com/valory-xyz/autonolas-tokenomics/blob/pre-c4a/docs/Autonolas_tokenomics_audit.pdf) and the [Autonolas whitepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf)). Exceptionally, some changes to the Autonolas Protocol can be executed by a
+Governance keys components are: a governance module (ADDREF), a Timelock (ADDREF), veOLAS (ADDREF). These components allow the community to propose, vote on, and implement changes. The governance token, veOLAS is the virtualized representation of OLAS locked and used a similar approach to veCRV, where votes are weighted depending on the time OLAS is locked other than the amount of locked OLAS. The maximum voting power for a fixed amount of locked OLAS can be achieved with the longest lock. In mathematical terms, voting power is calculated as amount * time_locked / MAXTIME. An overview of the governance process can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/governance/docs/Governance_process.pdf). While the OLAS token is a tradable utility token that will provide access to the core functionalities of the Autonolas project. The token follows the ERC20 standard and is deployed on the Ethereum mainnet. The token has an inflationary model to account for the economic primitives enabled by Autonolas tokenomics, e.g., bonding mechanism and OLAS top-up to boost developers' incentives (cf. OLAS token section [here](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomicis/docs/Autonolas_tokenomics_audit.pdf) and the [Autonolas whitepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf)). Exceptionally, some changes to the Autonolas Protocol can be executed by a
 community-owned multisig wallet (CM), bypassing the governance process. To align CM actions with the DAO’s intent and ensure their reversibility, a guard mechanism was introduced (see GuardCM code(ADDREF) and [aip-3](https://github.com/valory-xyz/autonolas-aip/blob/aip-3/content/aips/core-enhancing-autonolas-protocol-security.md) for more details) 
 
 The core governance coordination mechanisms are anchored on a single chain. However, due to Autonolas’ multi-chain
-focus, Autonolas employs cross-chain governance to enable governance actions between Ethereum (L1) and L2 networks like Polygon and Gnosis Chain at present, and others in the future. For cross-chain governance, Autonolas sends messages from Ethereum-based governance contracts to the target chains, employing mechanisms like the [FxPortal](https://github.com/0xPolygon/fx-portal/tree/v1.0.5) for Polygon ( cf. Add contract link) and [Arbitrary Message Bridge (AMB)](https://docs.gnosischain.com/bridges/tokenbridge/amb-bridge) for Gnosis Chain (cf. Add contract link) . Further details on Autonolas cross-chain bridging design can be found [here](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/governance_bridge.pdf). Whenever necessary, supplemented contracts are implemented for L1-L2 token transfers, such us the contracts (ADDLINK) enabling transfers of token deployed on Polygon to Ethereum and vice-versa based on a [Polygon-native FxPortal](https://github.com/fx-portal/contracts). Motivations and design overview of token bridging between Polygon and Ethereum can be found [here](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Bonding_mechanism_with_Polygon_LP_token.pdf) 
+focus, Autonolas employs cross-chain governance to enable governance actions between Ethereum (L1) and L2 networks like Polygon and Gnosis Chain at present, and others in the future. For cross-chain governance, Autonolas sends messages from Ethereum-based governance contracts to the target chains, employing mechanisms like the [FxPortal](https://github.com/0xPolygon/fx-portal/tree/v1.0.5) for Polygon ( cf. Add contract link) and [Arbitrary Message Bridge (AMB)](https://docs.gnosischain.com/bridges/tokenbridge/amb-bridge) for Gnosis Chain (cf. Add contract link) . Further details on Autonolas cross-chain bridging design can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/governance/docs/governance_bridge.pdf). Whenever necessary, supplemented contracts are implemented for L1-L2 token transfers, such us the contracts (ADDLINK) enabling transfers of token deployed on Polygon to Ethereum and vice-versa based on a [Polygon-native FxPortal](https://github.com/fx-portal/contracts). Motivations and design overview of token bridging between Polygon and Ethereum can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/governance/docs/Bonding_mechanism_with_Polygon_LP_token.pdf) 
 
 
-**Registries** allow developer of code in form of agents, components, or services to register and manage their code on-chain. The code existing off-chain will be uniquely represented on-chain by means of NFTs. The registries part under audit is focussed on registrations and management of agents and components (off-chain) code  uniquely represented on chain as NFTs. A summary of registries is provided [here](https://github.com/valory-xyz/autonolas-registries/blob/pre-c4a/docs/AgentServicesFunctionality.pdf) 
+**Registries** allow developer of code in form of agents, components, or services to register and manage their code on-chain. The code existing off-chain will be uniquely represented on-chain by means of NFTs. The registries part under audit is focussed on registrations and management of agents and components (off-chain) code  uniquely represented on chain as NFTs. A summary of registries is provided [here](https://github.com/code-423n4/2023-12-autonolas/blob/registries/docs/AgentServicesFunctionality.pdf) 
 
 The **tokenomics** aims to growth useful code and useful capital proportionally. 
-- Toward of growth useful code, it is incentivizes the (off-chain) creation and the (on-chain) registration of agents and components code making up useful services via the donations system. Specifically, the developers registering their code on-chain can accrue incentives proportional to their code contribution to registered service which received a donation (cf. the section [How the staking model for agents and component code is incentivized](https://github.com/valory-xyz/autonolas-tokenomics/blob/pre-c4a/docs/Autonolas_tokenomics_audit.pdf)). 
+- Toward of growth useful code, it is incentivizes the (off-chain) creation and the (on-chain) registration of agents and components code making up useful services via the donations system. Specifically, the developers registering their code on-chain can accrue incentives proportional to their code contribution to registered service which received a donation (cf. the section [How the staking model for agents and component code is incentivized](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/docs/Autonolas_tokenomics_audit.pdf)). 
 - In order to grow useful capital, the protocol can grow its own liquidity by incentivizing
 liquidity providers to sell their own liquidity pairs (with one of the tokens in the pair
-being the protocol token, e.g. OLAS-ETH) to the protocol for OLAS at a discount (cf. the section [How and when the bonding mechanism is incentivized](https://github.com/valory-xyz/autonolas-tokenomics/blob/pre-c4a/docs/Autonolas_tokenomics_audit.pdf)).)
+being the protocol token, e.g. OLAS-ETH) to the protocol for OLAS at a discount (cf. the section [How and when the bonding mechanism is incentivized](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/docs/Autonolas_tokenomics_audit.pdf)).)
 Cf. the [Autonolas tokenomics paper](https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf) for more details. 
 
 For enabling bonding of pairs on different chains the following workflow is used:
@@ -74,7 +68,7 @@ For enabling bonding of pairs on different chains the following workflow is used
 - Transfer the LP-token back to Ethereum using the same bridge methods.
 - Use the transferred LP-token for bonding in Autonolas' mechanism on Ethereum.
 
-Whenever necessary additional contracts are deployed to enable seamless bonding participation. This is the case for enabling bonding on Solana. Specifically, [Orca](https://docs.orca.so/) AMM to create the LP-token can be used on Solana. Despite the possibility of creating full [range deposit](https://docs.orca.so/reference/full-range-deposit-pools) with Orca, LPs retain the ability to provide concentrated liquidity within a specific range, and as representations of their liquidity they receive non-fungible tokens. To ensure compatibility with the existing [depository model]() (ADDLINL) the contract (ADDLINK) is designed to encapsulate concentrated liquidity from Orca whirlpool contract and represent the liquidity with a full range with fungible tokens. More details and an overview of the design can be found [here](https://github.com/valory-xyz/autonolas-tokenomics-solana/blob/main/docs/Bonding%20mechanism%20with%20liquidity%20on%20Solana..pdf).
+Whenever necessary additional contracts are deployed to enable seamless bonding participation. This is the case for enabling bonding on Solana. Specifically, [Orca](https://docs.orca.so/) AMM to create the LP-token can be used on Solana. Despite the possibility of creating full [range deposit](https://docs.orca.so/reference/full-range-deposit-pools) with Orca, LPs retain the ability to provide concentrated liquidity within a specific range, and as representations of their liquidity they receive non-fungible tokens. To ensure compatibility with the existing [depository model]() (ADDLINL) the contract (ADDLINK) is designed to encapsulate concentrated liquidity from Orca whirlpool contract and represent the liquidity with a full range with fungible tokens. More details and an overview of the design can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/lockbox-solana/docs/Bonding_mechanism_with_liquidity_on_Solana.pdf).
 
 
 ## Links
@@ -92,22 +86,22 @@ The following folders containing audit-related materials associated with develop
 
 The following are relevant for governance related contracts: 
 
-- [Summary of governance model](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Governance_process.pdf) 
-- [Cross-chain governance design](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/governance_bridge.pdf) 
-- [Bridging token created natively on Polygon to Ethereum and motivations](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Bonding_mechanism_with_Polygon_LP_token.pdf)
+- [Summary of governance model](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Governance_process.pdf) 
+- [Cross-chain governance design](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/governance_bridge.pdf) 
+- [Bridging token created natively on Polygon to Ethereum and motivations](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Bonding_mechanism_with_Polygon_LP_token.pdf)
 - [GuardCM design and updates](https://github.com/valory-xyz/autonolas-aip/blob/aip-3/content/aips/core-enhancing-autonolas-protocol-security.md) 
 
 The following are relevant for registries related contracts: 
 
-- [Summary of registries design](https://github.com/valory-xyz/autonolas-registries/blob/pre-c4a/docs/AgentServicesFunctionality.pdf) 
-- [Definitions and data structures](https://github.com/valory-xyz/autonolas-registries/blob/pre-c4a/docs/definitions.md) 
+- [Summary of registries design](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/AgentServicesFunctionality.pdf) 
+- [Definitions and data structures](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/definitions.md) 
 
 The following are relevant for tokenomics related contract:
 
-- [Summary of tokenomics model](https://github.com/valory-xyz/autonolas-tokenomics/blob/pre-c4a/docs/Autonolas_tokenomics_audit.pdf) 
+- [Summary of tokenomics model](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokeomics/docs/Autonolas_tokenomics_audit.pdf) 
 - [Autonolas tokenomics paper](https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf)
 - [Autonolas whitepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf) 
-- Uniswap-v2 like pairs can be used for the depository contract, [here](https://github.com/valory-xyz/autonolas-tokenomics/blob/pre-c4a/docs/LP_token_guide.md ) an illustrative guide 
+- Uniswap-v2 like pairs can be used for the depository contract, [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokeomics/docs/LP_token_guide.md ) an illustrative guide 
 
 - **Website:** https://olas.network/  
 
@@ -217,11 +211,11 @@ The following are relevant for tokenomics related contract:
 | [tokenomics/contracts/interfaces/IVotingEscrow.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IVotingEscrow.sol)                                | 4 | Interface for veOLAS (voting escrow)                                                                                                                | |
 | Lockbox Solana contracts (1)                                                                                                                                                                    | |                                                                                                                                                     | |
 | -----------                                                                                                                                                                                     | ----------- | -----------                                                                                                                                         | ----------- |
-| [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)                                        | 260 | Smart contract for encapsulating concentrated liquidity from Orca whirlpool contract and represent the full range liquidity with fungible tokens    | whirlpool (ADDLINK) |
+| [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)                                        | 260 | Smart contract for encapsulating concentrated liquidity from Orca whirlpool contract and represent the full range liquidity with fungible tokens    | [`whirlpool`](https://github.com/orca-so/whirlpools)
 | -----------                                                                                                                                                                                     | ----------- | -----------                                                                                                                                         | ----------- |
 | Lockbox Solana library (1)                                                                                                                                                                      | |                                                                                                                                                     | |
 | -----------                                                                                                                                                                                     | ----------- | -----------                                                                                                                                         | ----------- |
-| [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)                                        | 77 | This library provides a way for Solidity to interact with Solana's SPL-Token                                                                        | solana  (ADDLINK) , [`SplToken`]() (ADDLINK)|
+| [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)                                        | 77 | This library provides a way for Solidity to interact with Solana's SPL-Token                                                                        | [`SplToken`](https://github.com/solana-labs/solana/blob/master/tokens/src/spl_token.rs)|
 
 
 ## Out of scope
@@ -283,6 +277,7 @@ The following are relevant for tokenomics related contract:
 | -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
 | [lockbox-solana/solidity/test_position.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/test_position.sol)                                |  | | |
 | -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+
 # External imports
 
 - @openzeppelin/contracts/utils/introspection/IERC165.sol
@@ -333,8 +328,11 @@ The following are relevant for tokenomics related contract:
 - @prb/math/src/UD60x18.sol
     - [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/TokenomicsConstants.sol)
 
-- whirlpool 
+- @whirlpools
+  -  [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)
 
+- @solana/blob/master/tokens/src/spl_token.rs
+  - lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)  
 
 
 ## Scoping Details 
@@ -409,6 +407,7 @@ The following are relevant for tokenomics related contract:
 - Does it use a side-chain?: Yes
 
 - Describe any specific areas you would like addressed: Funds at risk, OLAS token robustness, security governance, bridges, CMguard contracts, correct behaviour, intended registries behaviour   
+
 ```
 
 # Tests
