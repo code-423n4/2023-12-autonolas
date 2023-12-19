@@ -26,7 +26,7 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 The known issues (some of them intended by design) that are not in scope for this audit are outlined in the following:
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Vulnerabilities_list_governance.pdf
-- https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/AgentServicesFunctionality.pdf
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/Vulnerabilities_list_registries.pdf
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Vulnerabilities_list_tokenomics.pdf
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Vulnerabilities_list_tokenomics-solana.pdf
 
