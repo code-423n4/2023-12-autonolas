@@ -91,7 +91,7 @@ Governance keys componetns are: a governance module (ADDREF), a Timelock (ADDREF
 community-owned multisig wallet (CM), bypassing the governance process. To align CM actions with the DAO’s intentand ensure their reversibility, a guard mechanism was introduced (see GuardCM code(ADDREF) and [aip-3](https://github.com/valory-xyz/autonolas-aip/blob/aip-3/content/aips/core-enhancing-autonolas-protocol-security.md) for more details) 
 
 The core governance coordination mechanisms are anchored on a single chain. However, due to Autonolas’ multi-chain
-focus, Autonolas employs cross-chain governance to enable governance actions between Ethereum (L1) and L2 networks like Polygon and Gnosis Chain at present, and others in the future. For cross-chain governance, Autonolas sends messages from Ethereum-based governance contracts to the target chains, employing mechanisms like the [FxPortal](https://github.com/0xPolygon/fx-portal/tree/v1.0.5) for Polygon ( cf. Add contract link) and [Arbitrary Message Bridge (AMB)](https://docs.gnosischain.com/bridges/tokenbridge/amb-bridge) for Gnosis Chain (cf. Add contract link) . Further details on Autonolas cross-chain bridging design can be found [here](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/governace_bridge.pdf). Whenever necessary, supplemented contracts are implemented for L1-L2 token transfers, such us the contracts (ADDLINK) enabling transfers of token deployed on Polygon to Ethereum and vice-versa based on a [Polygon-native FxPortal](https://github.com/fx-portal/contracts). Motivations and design overview of token bridgig between Polygon and Ethereum can be found [here](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Bonding_mechanism_with_Polygon_LP_token.pdf) 
+focus, Autonolas employs cross-chain governance to enable governance actions between Ethereum (L1) and L2 networks like Polygon and Gnosis Chain at present, and others in the future. For cross-chain governance, Autonolas sends messages from Ethereum-based governance contracts to the target chains, employing mechanisms like the [FxPortal](https://github.com/0xPolygon/fx-portal/tree/v1.0.5) for Polygon ( cf. Add contract link) and [Arbitrary Message Bridge (AMB)](https://docs.gnosischain.com/bridges/tokenbridge/amb-bridge) for Gnosis Chain (cf. Add contract link) . Further details on Autonolas cross-chain bridging design can be found [here](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/governance_bridge.pdf). Whenever necessary, supplemented contracts are implemented for L1-L2 token transfers, such us the contracts (ADDLINK) enabling transfers of token deployed on Polygon to Ethereum and vice-versa based on a [Polygon-native FxPortal](https://github.com/fx-portal/contracts). Motivations and design overview of token bridgig between Polygon and Ethereum can be found [here](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Bonding_mechanism_with_Polygon_LP_token.pdf) 
 
 
 **Registries** allow developer of code in form of agents, components, or sevices to register and manage their code on-chain. The code existing off-chain will be uniquely represented on-chain by means of NFTs. The registries part under audit is focussed on registations and management of agents and components (off-chain) code  uniquely representeded on chain as NFTs. A summary of registries is provided [here](https://github.com/valory-xyz/autonolas-registries/blob/pre-c4a/docs/AgentServicesFunctionality.pdf) 
@@ -129,7 +129,7 @@ The following folders containing audit-related materials associated with develop
 The following are relevant for governance related contracts: 
 
 - [Summary of governance model](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Governance_process.pdf) 
-- [Cross-chain governance design](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/governace_bridge.pdf) 
+- [Cross-chain governance design](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/governance_bridge.pdf) 
 - [Bridging token created natively on Polygon to Ethereum and motivations](https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Bonding_mechanism_with_Polygon_LP_token.pdf)
 - [GuardCM design and updates](https://github.com/valory-xyz/autonolas-aip/blob/aip-3/content/aips/core-enhancing-autonolas-protocol-security.md) 
 
@@ -163,170 +163,170 @@ The following are relevant for tokenomics related contract:
 
 ## Files in scope
 
-| Contract | SLOC | Purpose | Libraries used |  
-| ----------- | ----------- | ----------- | ----------- |
-| Governance contracts (11) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governace/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/GovernorOLAS.sol) | 70 | This contract is the governance module contract | [`@openzeppelin/*`](https://openzeppelin.com/contracts/GovernorOLAS.sol)  |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/Timelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/Timelock.sol) | 7| This enforces a time delay on all
-the proposal executions. | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/OLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/OLAS.sol) | 82 | ERC20 token enabling the core functionalities of the protocol | [`solmate/*`](https://github.com/transmissions11/solmate) |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/veOLAS.sol) | 462 | veOLAS is a virtualized representation of the locked OLAS | [`@openzeppelin/*`](https://openzeppelin.com/contracts/)|
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/wveOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/wveOLAS.sol) | 140 | wveOLAS is a wrapper smart contract for view functions of veOLAS contract. This allows to fix non-intended view function behaviours in veOLAS | |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/GuardCM.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/GuardCM.sol) | 321 | Smart contract for Gnosis Safe community multisig (CM) guard | [`@gnosis.pm/*`](https://github.com/safe-global/safe-contracts) |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/FxGovernorTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/FxGovernorTunnel.sol) | 80 | Smart contract for the executing governance actions on Polygon dictated by cross-chain messages sends from Ethereum-based governance contracts| |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/HomeMediator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/HomeMediator.sol) | 82 | Smart contract for the executing governance actions on Gnosis chain dictated by cross-chain messages sends from Ethereum-based governance contracts| |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/BridgedERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/BridgedERC20.sol) | 33 | ERC20 token representation representation of token from another chain. Token can be minted and burned by the bridge mediator contract. | [`solmate/*`](https://github.com/transmissions11/solmate) |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/FxERC20ChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/FxERC20ChildTunnel.sol) | 52 | Smart contract for the L2 token management part | [`fx-portal/*`](https://github.com/0xPolygon/fx-portal/tree/296ac8d41579f98d3a4dfb6d41737fae272a30ba) |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/FxERC20RootTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/FxERC20RootTunnel.sol) | 49 | Smart contract for the L1 token management part | [`fx-portal/*`](https://github.com/0xPolygon/fx-portal/tree/296ac8d41579f98d3a4dfb6d41737fae272a30ba) |
-| ----------- | ----------- | ----------- | ----------- |
-| Governance interfaces (2) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/interfaces/IERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/interfaces/IERC20.sol) | 11 | ERC20 token interface| |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/interfaces/IErrors.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governace/contracts/interfaces/IErrors.sol) | 19 | Errors interface | |
-| ----------- | ----------- | ----------- | ----------- |
-| Registries contracts (8) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/GenericRegistry.sol) | 75 |  Smart contract for generic registry template | [`solmate/*`](https://github.com/transmissions11/solmate)   |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/UnitRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/UnitRegistry.sol) |151|  Smart contract for registering units (either agent or components)| |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/ComponentRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/ComponentRegistry.sol) | 26 | Smart contract for registering components | |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/AgentRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/AgentRegistry.sol) | 41 | Smart contract for registering agents| |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/GenericManager.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/GenericManager.sol) | 33 | Smart contract for generic registry manager template | |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/RegistriesManager.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/RegistriesManager.sol) | 35 | Periphery smart contract for managing components and agents | |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/multisigs/GnosisSafeMultisig.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/multisigs/GnosisSafeMultisig.sol) | 63 | Smart contract for Gnosis Safe multisig implementation of a generic multisig interface | [`@gnosis.pm/*`](https://github.com/safe-global/safe-contracts) |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/multisigs/GnosisSafeSameAddressMultisig.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/multisigs/GnosisSafeSameAddressMultisig.sol)) | 66 | Smart contract for Gnosis Safe verification of an already existent multisig address | [`@gnosis.pm/*`](https://github.com/safe-global/safe-contracts) |
-| ----------- | ----------- | ----------- | ----------- |
-| Registries interfaces (2) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/interfaces/IErrorsRegistries.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/interfaces/IErrorsRegistries.sol)) | 28 | Errors interface| |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/interfaces/IRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/interfaces/IRegistry.sol) | 17 | Interface for the component / agent manipulation | |
-| ----------- | ----------- | ----------- | ----------- |
-| Tokenomics contracts (8) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/Depository.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/Depository.sol) | 254 |  Smart contract handling the logic for creation and closure of bonding programs, and the deposits and reedems bonds |  |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/Dispenser.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/Dispenser.sol) | 65 | Smart contract for distributing code incentives | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/DonatorBlacklist.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/DonatorBlacklist.sol) | 42 | Smart contract for blacklisting donors | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/GenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/GenericBondCalculator.sol) | 44 |  Smart contract for calculation of OLAS payouts for bond |  [`@prb-math/*`]](https://github.com/PaulRBerg/prb-math) |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/Tokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/Tokenomics.sol) | 646 |  Smart contract implementing the tokenomics model for code incentives and discount factor bonding mechanism regulations | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/TokenomicsConstants.sol) | 59 |  Smart contract with tokenomics constants for annual inflation supplies| [`@prb-math/*`]](https://github.com/PaulRBerg/prb-math)|
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/TokenomicsProxy.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/TokenomicsProxy.sol) | 34 | Smart contract for tokenomics proxy. Proxy implementation is created based on the Universal Upgradeable Proxy Standard (UUPS) EIP-1822 | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/Treasury.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/Treasury.sol]) | 289 | Smart contract for managing Olas Treasury| |
-| ----------- | ----------- | ----------- | ----------- |
-| Tokenomics interfaces (10) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/IDonatorBlacklist.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/IDonatorBlacklist.sol]) | 4 |  DonatorBlacklist interface | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/IErrorsTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/IErrorsTokenomics.sol) | 31 | Errors interface| |
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/interfaces/IGenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/IGenericBondCalculator.sol) | 6 | Interface for generic bond calculator | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/IOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/blob/contracts/interfaces/IOLAS.sol) | 5 | Interface for OLAS token | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/IServiceRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/IServiceRegistry.sol) | 12 | Interface for for the service registry calls | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/IToken.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/IToken.sol) | 10 | Generic token interface for IERC20 and IERC721 tokens | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/ITokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/ITokenomics.sol) | 17 | Interface for tokenomics management ||
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/ITreasury.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/ITreasury.sol) | 8 | Interface for trasury management | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/IUniswapV2Pair.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/IUniswapV2Pair.sol) | 7 | Uniswap v2 related interface | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/interfaces/IVotingEscrow.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/interfaces/IVotingEscrow.sol) | 4 | Interface for veOLAS (voting escrow) | |
-| Lockbox Solana contracts (1) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/lockbox-solana/solidity/liquidity_lockbox.sol) | 260 | Smart contract for encapsulating concentrated liquidity from Orca whirlpool contract and represent the full range liquidity with fungible tokens | whirlpool (ADDLINK) |
-| ----------- | ----------- | ----------- | ----------- |
-| Lockbox Solana library (1) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/lockbox-solana/solidity/library/spl_token.sol) | 77 | This library provides a way for Solidity to interact with Solana's SPL-Token | solana  (ADDLINK) , [`SplToken`]() (ADDLINK)|
+| Contract                                                                                                                                                                                        | SLOC | Purpose | Libraries used |  
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----------- | ----------- | ----------- |
+| Governance contracts (11)                                                                                                                                                                       | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)                                                         | 70 | This contract is the governance module contract | [`@openzeppelin/*`](https://openzeppelin.com/contracts/GovernorOLAS.sol)  |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/Timelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/Timelock.sol)                                                                 | 7| This enforces a time delay on all
+ the proposal executions.                                                                                                                                                                        | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/OLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/OLAS.sol)                                                                         | 82 | ERC20 token enabling the core functionalities of the protocol | [`solmate/*`](https://github.com/transmissions11/solmate) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)                                                                     | 462 | veOLAS is a virtualized representation of the locked OLAS | [`@openzeppelin/*`](https://openzeppelin.com/contracts/)|
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/wveOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/wveOLAS.sol)                                                                   | 140 | wveOLAS is a wrapper smart contract for view functions of veOLAS contract. This allows to fix non-intended view function behaviours in veOLAS | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/multisigs/GuardCM.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/multisigs/GuardCM.sol)                                               | 321 | Smart contract for Gnosis Safe community multisig (CM) guard | [`@gnosis.pm/*`](https://github.com/safe-global/safe-contracts) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/FxGovernorTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxGovernorTunnel.sol)                                 | 80 | Smart contract for the executing governance actions on Polygon dictated by cross-chain messages sends from Ethereum-based governance contracts| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/HomeMediator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/HomeMediator.sol)                                         | 82 | Smart contract for the executing governance actions on Gnosis chain dictated by cross-chain messages sends from Ethereum-based governance contracts| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/BridgedERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/BridgedERC20.sol)                                         | 33 | ERC20 token representation representation of token from another chain. Token can be minted and burned by the bridge mediator contract. | [`solmate/*`](https://github.com/transmissions11/solmate) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/FxERC20ChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20ChildTunnel.sol)                             | 52 | Smart contract for the L2 token management part | [`fx-portal/*`](https://github.com/0xPolygon/fx-portal/tree/296ac8d41579f98d3a4dfb6d41737fae272a30ba) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/FxERC20RootTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20RootTunnel.sol)                               | 49 | Smart contract for the L1 token management part | [`fx-portal/*`](https://github.com/0xPolygon/fx-portal/tree/296ac8d41579f98d3a4dfb6d41737fae272a30ba) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| Governance interfaces (2)                                                                                                                                                                       | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/interfaces/IERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/interfaces/IERC20.sol)                                               | 11 | ERC20 token interface| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [governance/contracts/interfaces/IErrors.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/interfaces/IErrors.sol)                                             | 19 | Errors interface | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| Registries contracts (8)                                                                                                                                                                        | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/GenericRegistry.sol)                                                  | 75 |  Smart contract for generic registry template | [`solmate/*`](https://github.com/transmissions11/solmate)   |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/UnitRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/UnitRegistry.sol)                                                        |151|  Smart contract for registering units (either agent or components)| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/ComponentRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/ComponentRegistry.sol)                                              | 26 | Smart contract for registering components | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/AgentRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/AgentRegistry.sol)                                                      | 41 | Smart contract for registering agents| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/GenericManager.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/GenericManager.sol)                                                    | 33 | Smart contract for generic registry manager template | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/RegistriesManager.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/RegistriesManager.sol)                                              | 35 | Periphery smart contract for managing components and agents | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/multisigs/GnosisSafeMultisig.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/multisigs/GnosisSafeMultisig.sol)                        | 63 | Smart contract for Gnosis Safe multisig implementation of a generic multisig interface | [`@gnosis.pm/*`](https://github.com/safe-global/safe-contracts) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/multisigs/GnosisSafeSameAddressMultisig.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/multisigs/GnosisSafeSameAddressMultisig.sol)) | 66 | Smart contract for Gnosis Safe verification of an already existent multisig address | [`@gnosis.pm/*`](https://github.com/safe-global/safe-contracts) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| Registries interfaces (2)                                                                                                                                                                       | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/interfaces/IErrorsRegistries.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/interfaces/IErrorsRegistries.sol))                       | 28 | Errors interface| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [registries/contracts/interfaces/IRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/interfaces/IRegistry.sol)                                        | 17 | Interface for the component / agent manipulation | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| Tokenomics contracts (8)                                                                                                                                                                        | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/Depository.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/Depository.sol)                                                            | 254 |  Smart contract handling the logic for creation and closure of bonding programs, and the deposits and reedems bonds |  |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/Dispenser.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/Dispenser.sol)                                                              | 65 | Smart contract for distributing code incentives | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/DonatorBlacklist.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/DonatorBlacklist.sol)                                                | 42 | Smart contract for blacklisting donors | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/GenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/GenericBondCalculator.sol)                                      | 44 |  Smart contract for calculation of OLAS payouts for bond |  [`@prb-math/*`]](https://github.com/PaulRBerg/prb-math) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/Tokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/Tokenomics.sol)                                                            | 646 |  Smart contract implementing the tokenomics model for code incentives and discount factor bonding mechanism regulations | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/TokenomicsConstants.sol)                                          | 59 |  Smart contract with tokenomics constants for annual inflation supplies| [`@prb-math/*`]](https://github.com/PaulRBerg/prb-math)|
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/TokenomicsProxy.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/TokenomicsProxy.sol)                                                  | 34 | Smart contract for tokenomics proxy. Proxy implementation is created based on the Universal Upgradeable Proxy Standard (UUPS) EIP-1822 | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/Treasury.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/Treasury.sol])                                                               | 289 | Smart contract for managing Olas Treasury| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| Tokenomics interfaces (10)                                                                                                                                                                      | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IDonatorBlacklist.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IDonatorBlacklist.sol])                       | 4 |  DonatorBlacklist interface | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IErrorsTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IErrorsTokenomics.sol)                        | 31 | Errors interface| |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IGenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IGenericBondCalculator.sol)              | 6 | Interface for generic bond calculator | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IOLAS.sol)                                      | 5 | Interface for OLAS token | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IServiceRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IServiceRegistry.sol)                          | 12 | Interface for for the service registry calls | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IToken.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IToken.sol)                                              | 10 | Generic token interface for IERC20 and IERC721 tokens | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/ITokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/ITokenomics.sol)                                    | 17 | Interface for tokenomics management ||
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/ITreasury.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/ITreasury.sol)                                        | 8 | Interface for trasury management | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IUniswapV2Pair.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IUniswapV2Pair.sol)                              | 7 | Uniswap v2 related interface | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/interfaces/IVotingEscrow.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IVotingEscrow.sol)                                | 4 | Interface for veOLAS (voting escrow) | |
+| Lockbox Solana contracts (1)                                                                                                                                                                    | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)                                        | 260 | Smart contract for encapsulating concentrated liquidity from Orca whirlpool contract and represent the full range liquidity with fungible tokens | whirlpool (ADDLINK) |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| Lockbox Solana library (1)                                                                                                                                                                      | | | |
+| -----------                                                                                                                                                                                     | ----------- | ----------- | ----------- |
+| [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)                                        | 77 | This library provides a way for Solidity to interact with Solana's SPL-Token | solana  (ADDLINK) , [`SplToken`]() (ADDLINK)|
 
 
 ## Out of scope
 
-| File | SLOC | Purpose | Libraries used |  
-| ----------- | ----------- | ----------- | ----------- |
-| Governance contracts (11) | | | |
-| [governance/contracts/test/BridgeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/test/BridgeSetup.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/test/BrokenERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/test/BrokenERC20.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/test/SafeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/test/SafeSetup.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/multisigs/test/MockTimelockCM.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/multisigs/test/MockTimelockCM.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/multisigs/test/MockTreasury.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/multisigs/test/MockTreasury.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/bridges/test/ChildMockERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/brides/test/ChildMockERC20.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/bridges/test/FxChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/brides/test/FxChildTunnel.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/bridges/test/FxRootMock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/brides/test/FxRootMock.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/bridges/test/HomeMediatorTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/brides/test/HomeMediatorTest.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/bridges/test/MockAMBMediator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/brides/test/MockAMBMediator.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [governance/contracts/bridges/test/MockTimelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/brides/test/MockTimelock.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| Registries contracts (3) | | | |
-| [registries/contracts/test/ComponentRegistryTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/test/ComponentRegistryTest.sol]) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/test/GnosisSafeABICreator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/test/GnosisSafeABICreator.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [registries/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/test/ReentrancyAttacker.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| Tokenomics contracts (10) | | | |
-| [tokenomics/contracts/test/DepositAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/DepositAttacker.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/ERC20Token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/ERC20Token.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/MockRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/MockRegistry.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/MockTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/MockTokenomics.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/MockVE.sol](https://github.com/code-423n4/2023-12-autonolas/tokenomics/blob/contracts/test/MockVE.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/ReentrancyAttacker.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/TestTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/TestTokenomics.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/UniswapFactory.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/UniswapFactory.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/UniswapRouter.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/UniswapRouter.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [tokenomics/contracts/test/Zuniswapv2.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/test/Zuniswapv2.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
-| Lockbox Solana (1) | | | |
-| ----------- | ----------- | ----------- | ----------- |
-| [lockbox-solana/solidity/test_position.sol](https://github.com/code-423n4/2023-12-autonolas/blob/lockbox-solana/solidity/test_position.sol) |  | | |
-| ----------- | ----------- | ----------- | ----------- |
+| File                                                                                                                                                                       | SLOC | Purpose | Libraries used |  
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----------- | ----------- | ----------- |
+| Governance contracts (11)                                                                                                                                                  | | | |
+| [governance/contracts/test/BridgeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/test/BridgeSetup.sol)                           |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/test/BrokenERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/test/BrokenERC20.sol)                           |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/test/SafeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/test/SafeSetup.sol)                               |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/multisigs/test/MockTimelockCM.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/multisigs/test/MockTimelockCM.sol) |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/multisigs/test/MockTreasury.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/multisigs/test/MockTreasury.sol)     |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/ChildMockERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/brides/test/ChildMockERC20.sol)      |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/FxChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/brides/test/FxChildTunnel.sol)        |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/FxRootMock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/brides/test/FxRootMock.sol)              |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/HomeMediatorTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/brides/test/HomeMediatorTest.sol)  |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/MockAMBMediator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/brides/test/MockAMBMediator.sol)    |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [governance/contracts/bridges/test/MockTimelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/brides/test/MockTimelock.sol)          |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| Registries contracts (3)                                                                                                                                                   | | | |
+| [registries/contracts/test/ComponentRegistryTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ComponentRegistryTest.sol])      |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [registries/contracts/test/GnosisSafeABICreator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/GnosisSafeABICreator.sol)         |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [registries/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ReentrancyAttacker.sol)             |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| Tokenomics contracts (10)                                                                                                                                                  | | | |
+| [tokenomics/contracts/test/DepositAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/DepositAttacker.sol)                   |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/ERC20Token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/ERC20Token.sol)                             |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/MockRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/MockRegistry.sol)                         |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/MockTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/MockTokenomics.sol)                     |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/MockVE.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/MockVE.sol)                                     |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/ReentrancyAttacker.sol)                  |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/TestTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/TestTokenomics.sol)                          |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/UniswapFactory.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/UniswapFactory.sol)                          |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/UniswapRouter.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/UniswapRouter.sol)                            |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [tokenomics/contracts/test/Zuniswapv2.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/Zuniswapv2.sol)                                  |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| Lockbox Solana (1)                                                                                                                                                         | | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
+| [lockbox-solana/solidity/test_position.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/test_position.sol)                                |  | | |
+| -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
 
 
 # External imports
