@@ -24,10 +24,10 @@ Automated findings output for the audit can be found [here](https://github.com/c
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
 The known issues (some of them intended by design) that are not in scope for this audit are outlened in the following: (ADJUST LIKS)
-- https://github.com/valory-xyz/autonolas-governance/blob/pre-c4a/docs/Vulnerabilities_list_governance.pdf 
-- https://github.com/valory-xyz/autonolas-registries/blob/pre-c4a/docs/Vulnerabilities_list_registries.pdf  
-- https://github.com/valory-xyz/autonolas-tokenomics/blob/pre-c4a/docs/Vulnerabilities_list_tokenomics.pdf  
-- https://github.com/valory-xyz/autonolas-tokenomics-solana/blob/main/docs/Vulnerabilities_list_tokenomics-solana.pdf 
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Vulnerabilities_list_governance.pdf 
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/registies/docs/Vulnerabilities_list_registries.pdf  
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Vulnerabilities_list_tokenomisc.pdf  
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Vulnerabilities_list_tokenomics-solana.pdf 
 
 :warning: **Warning** <br /> 
 
@@ -73,10 +73,10 @@ Whenever necessary additional contracts are deployed to enable seamless bonding 
 - **Previous audits:** :  (ADJUST LINKS)
 
 The following folders containing audit-related materials associated with development progresses.
-- https://github.com/valory-xyz/autonolas-governance/tree/pre-c4a/audits  
-- https://github.com/valory-xyz/autonolas-registries/tree/pre-c4a/audits
-- https://github.com/valory-xyz/autonolas-tokenomics/tree/pre-c4a/audits 
-- https://github.com/valory-xyz/autonolas-tokenomics-solana/tree/pre-c4a/audits 
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/audits  
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/audits 
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/tokemomics/audits 
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/audits 
 
 - **Documentation:** (ADJUST LINKS)
 
