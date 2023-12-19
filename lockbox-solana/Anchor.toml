@@ -1,0 +1,19 @@
+[toolchain]
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+liquidity_lockbox = "GUGGHzwC8wEKY3g7QS38YmoS8t5Q2faWAGAfxDK2bXbb"
+test_position = "4fujZhdXYV57NzNUhHcAibK59fYRXKb4NpM4g5SCU8tw"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "artifacts/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
