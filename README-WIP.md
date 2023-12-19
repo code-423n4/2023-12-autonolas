@@ -1,47 +1,3 @@
-
-# ✨ So you want to run an audit
-
-This `README.md` contains a set of checklists for our audit collaboration.
-
-Your audit will use two repos: 
-- **an _audit_ repo** (this one), which is used for scoping your audit and for providing information to wardens
-- **a _findings_ repo**, where issues are submitted (shared with you after the audit) 
-
-Ultimately, when we launch the audit, this repo will be made public and will contain the smart contracts to be reviewed and all the information needed for audit participants. The findings repo will be made public after the audit report is published and your team has mitigated the identified issues.
-
-Some of the checklists in this doc are for **C4 (🐺)** and some of them are for **you as the audit sponsor (⭐️)**.
-
----
-# Repo setup
-
-## ⭐️ Sponsor: Add code to this repo
-
-- [ ] Create a PR to this repo with the below changes:
-- [ ] Provide a self-contained repository with working commands that will build (at least) all in-scope contracts, and commands that will run tests producing gas reports for the relevant contracts.
-- [ ] Make sure your code is thoroughly commented using the [NatSpec format](https://docs.soliditylang.org/en/v0.5.10/natspec-format.html#natspec-format).
-- [ ] Please have final versions of contracts and documentation added/updated in this repo **no less than 48 business hours prior to audit start time.**
-- [ ] Be prepared for a 🚨code freeze🚨 for the duration of the audit — important because it establishes a level playing field. We want to ensure everyone's looking at the same code, no matter when they look during the audit. (Note: this includes your own repo, since a PR can leak alpha to our wardens!)
-
-
----
-
-## ⭐️ Sponsor: Edit this `README.md` file
-
-- [ ] Modify the contents of this `README.md` file. Describe how your code is supposed to work with links to any relevent documentation and any other criteria/details that the C4 Wardens should keep in mind when reviewing. ([Here's a well-constructed example.](https://github.com/code-423n4/2022-08-foundation#readme))
-- [ ] Review the Gas award pool amount. This can be adjusted up or down, based on your preference - just flag it for Code4rena staff so we can update the pool totals across all comms channels.
-- [ ] Optional / nice to have: pre-record a high-level overview of your protocol (not just specific smart contract functions). This saves wardens a lot of time wading through documentation.
-- [ ] [This checklist in Notion](https://code4rena.notion.site/Key-info-for-Code4rena-sponsors-f60764c4c4574bbf8e7a6dbd72cc49b4#0cafa01e6201462e9f78677a39e09746) provides some best practices for Code4rena audits.
-
-## ⭐️ Sponsor: Final touches
-- [ ] Review and confirm the details in the section titled "Scoping details" and alert Code4rena staff of any changes.
-- [ ] Check that images and other files used in this README have been uploaded to the repo as a file and then linked in the README using absolute path (e.g. `https://github.com/code-423n4/yourrepo-url/filepath.png`)
-- [ ] Ensure that *all* links and image/file paths in this README use absolute paths, not relative paths
-- [ ] Check that all README information is in markdown format (HTML does not render on Code4rena.com)
-- [ ] Remove any part of this template that's not relevant to the final version of the README (e.g. instructions in brackets and italic)
-- [ ] Delete this checklist and all text above the line below when you're ready.
-
----
-
 # Autonolas audit details
 - Total Prize Pool: XXX XXX USDC (Notion: Total award pool)
   - HM awards: XXX XXX USDC (Notion: HM (main) pool)
@@ -153,13 +109,6 @@ The following are relevant for tokenomics related contract:
 
 
 # Scope
-
-[ ⭐️ SPONSORS: add scoping and technical details here ]
-
-- [ ] In the table format shown below, provide the name of each contract and:
-  - [ ] source lines of code (excluding blank lines and comments) in each *For line of code counts, we recommend running prettier with a 100-character line length, and using [cloc](https://github.com/AlDanial/cloc).* 
-  - [ ] external contracts called in each
-  - [ ] libraries used in each
 
 ## Files in scope
 
@@ -327,51 +276,132 @@ The following are relevant for tokenomics related contract:
 | -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
 | [lockbox-solana/solidity/test_position.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/test_position.sol)                                |  | | |
 | -----------                                                                                                                                                                | ----------- | ----------- | ----------- |
-
-
 # External imports
 
-- @prb/math/src/Common.sol 
+- @openzeppelin/contracts/utils/introspection/IERC165.sol
+    - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+    - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/veOLAS.sol)
 
-# Additional Context
+- @openzeppelin/contracts/governance/Governor.sol
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
 
-- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
-- [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
-- [ ] Please list specific ERC721 that your protocol is anticipated to interact with.
-- [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
-- [ ] Please list all trusted roles (e.g. operators, slashers, pausers, etc.), the privileges they hold, and any conditions under which privilege escalation is expected/allowable
-- [ ] In the event of a DOS, could you outline a minimum duration after which you would consider a finding to be valid? This question is asked in the context of most systems' capacity to handle DoS attacks gracefully for a certain period.
-- [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format: 
-  - `Contract1`: Should comply with `ERC/EIPX`
-  - `Contract2`: Should comply with `ERC/EIPY`
+- @openzeppelin/contracts/governance/extensions/GovernorSettings.sol
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
 
-## Attack ideas (Where to look for bugs)
-*List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example*
+- @openzeppelin/contracts/governance/compatibility/GovernorCompatibilityBravo.sol
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
 
-## Main invariants
-*Describe the project's main invariants (properties that should NEVER EVER be broken).*
+- @openzeppelin/contracts/governance/extensions/GovernorVotes.sol
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+
+- @openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+
+- @openzeppelin/contracts/governance/extensions/GovernorTimelockControl.sol
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/Timelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/Timelock.sol)
+
+- @solmate/src/tokens/ERC20.sol
+  - [governance/contracts/OLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/OLAS.sol)
+  - [governance/contracts/BridgedERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/BridgedERC20.sol)
+
+- @solmate/src/tokens/ERC721.sol
+  - [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/GenericRegistry.sol) 
+
+- @fx-portal/contracts/tunnel/FxBaseChildTunnel.sol 
+  - [governance/contracts/FxERC20ChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/FxERC20ChildTunnel.sol)
+
+- @fx-portal/contracts/tunnel/FxBaseRootTunnel.sol 
+  - [governance/contracts/FxERC20RootTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/FxERC20RootTunnel.sol)
+
+- @openzeppelin/contracts/governance/utils/IVotes.sol
+  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/veOLAS.sol)
+
+- @openzeppelin/contracts/token/ERC20/IERC20.sol
+  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/veOLAS.sol)
+
+- @prb/math/src/Common.sol
+  - [tokenomics/contracts/GenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/GenericBondCalculator.sol)
+
+- @prb/math/src/UD60x18.sol
+    - [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/TokenomicsConstants.sol)
+
+- whirpool 
+
+
 
 ## Scoping Details 
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
 ```
-- If you have a public code repo, please share it here:  
-- How many contracts are in scope?:   
-- Total SLoC for these contracts?:  
-- How many external imports are there?:  
-- How many separate interfaces and struct definitions are there for the contracts within scope?:  
-- Does most of your code generally use composition or inheritance?:   
-- How many external calls?:   
+- If you have a public code repo, please share it here: 
+
+- https://github.com/valory-xyz/autonolas-governance/tree/pre-c4a 
+- https://github.com/valory-xyz/autonolas-registries/tree/pre-c4a   
+- https://github.com/valory-xyz/autonolas-tokenomics/tree/pre-c4a  
+- https://github.com/valory-xyz/autonolas-tokenomics-solana/tree/pre-c4a 
+
+- How many contracts are in scope?: 43
+- Total SLoC for these contracts?: 3811 
+- How many external imports are there?: 17
+  - governance: @solmate/src/tokens/ERC20, OZ timelock controller, OZ IERC165, OZ governor, OZ governorSetting, OZ GovernorCompatibilityBravo, OZ GovernorVotes, OZ GovernorQuorumFraction, OZ IERC20, OZ IVotes, FxBaseChildTunnel.sol, FxBaseRootTunnel.sol, gnosis safe Enum.sol
+  - registries: @solmate/src/tokens/ERC721.so
+  - tokenomics: @prb/math/src/Common.sol,  @prb/math/src/UD60x18.sol
+  - lockbox-solana: whirpool 
+
+- How many separate interfaces and struct definitions are there for the contracts within scope?: 
+  - Separate interface: 14
+    - governance: 2 
+    - tokenomics: 10
+    - registries: 2 
+  - Struc definitions: 11 
+    - governance: 3 
+    - tokenomics: 6
+    - registries: 1
+    - lockbox-solana: 1 
+
+
+- Does most of your code generally use composition or inheritance?: Composition
+
+- How many external calls?: 5 (Uniswap LP price, Balancer LP price, Safe enum,  Safe creation, Orca whirlpool)
+
 - What is the overall line coverage percentage provided by your tests?:
-- Is this an upgrade of an existing system?:
+  - governance: 98.72% 
+  - tokenomics: 100%
+  - registries: 100%
+  - lockbox-solana: methods 100% covered (no way to measure as for the others)
+ 
+- Is this an upgrade of an existing system?: No
+
 - Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): 
-- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?:   
-- Please describe required context:   
-- Does it use an oracle?:  
+  - Timelock function
+  - NFT
+  - AMM
+  - Uses L2
+  - Multi-Chain
+  - Side-Chain
+  - ERC-20 Token
+  - Non ERC-20 Token
+
+- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: No, but general context can help understanding the contract design choices, cf. [Autonolar Withepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf)
+
+- Please describe required context: N/A 
+
+- Does it use an oracle?:  No
+
 - Describe any novel or unique curve logic or mathematical models your code uses: 
-- Is this either a fork of or an alternate implementation of another project?:   
-- Does it use a side-chain?:
-- Describe any specific areas you would like addressed:
+  - Our governance token veOLAS adopts a similar approach to veCRV, where votes are weighted depending on the time OLAS is locked other than the amount of locked OLAS. The maximum voting power for a fixed amount of locked OLAS can be achieved with the longest lock. In mathematical terms, voting power is calculated as amount * time_locked / MAXTIME. An overview of the governance process can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/governance/docs/Governance_process.pdf )
+  - A brief overview of the tokenomics model can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/docs/Autonolas_tokenomics_audit.pdf.) For more details, see the [Tokenomics paper](https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf). 
+
+- A brief overview of the liquidity-loxcbox wrapper and the motivation for it can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/lockbox-solana/docs/Bonding_mechanism_with_liquidity_on_Solana.pdf)
+
+- A brief overview of registries can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/registries/docs/AgentServicesFunctionality.pdf) 
+
+
+- Is this either a fork of or an alternate implementation of another project?: No
+
+- Does it use a side-chain?: Yes
+
+- Describe any specific areas you would like addressed: Funds at risk, OLAS token robustness, security governance, bridges, CMguard contracts, correct behaviour, intended registries behaviour   
 ```
 
 # Tests
