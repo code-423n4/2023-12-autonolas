@@ -325,19 +325,140 @@ the proposal executions. | [`@openzeppelin/*`](https://openzeppelin.com/contract
 
 # Tests
 
-*Provide every step required to build the project from a fresh git clone, as well as steps to run the tests with a gas report.* 
+## Governance
+cd into sub repo:
+```
+cd governance
+```
 
-*Note: Many wardens run Slither as a first pass for testing.  Please document any known errors with no workaround.* 
+Install the project:
+```
+yarn install
+```
 
+Compile the code:
+```
+npx hardhat compile
+```
 
+Run tests with gas report:
+```
+npx hardhat test
+```
 
+All the tests come with the gas
 
+Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/audits).
 
+The list of known vulnerabilities can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Vulnerabilities_list_governance.pdf?raw=true).
 
+## Registries
+cd into sub repo:
+```
+cd registries
+```
 
+Install the project:
+```
+yarn install
+```
 
+Compile the code:
+```
+npx hardhat compile
+```
 
+Run tests with gas report:
+```
+npx hardhat test
+```
 
+Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/audits).
 
+The list of known vulnerabilities can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/Vulnerabilities_list_registries.pdf?raw=true).
+
+## Tokenomics
+cd into sub repo:
+```
+cd tokenomics
+```
+
+Install the project:
+```
+yarn install
+```
+
+Install [Foundry](https://book.getfoundry.sh/getting-started/installation) in order to test contracts with it along with Hardhat tests.
+
+Compile the code:
+```
+npm run compile
+```
+
+Run tests with Hardhat and gas report:
+```
+npx hardhat test
+```
+
+Run tests with Foundry:
+```
+forge test --hh -vv
+```
+
+Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/audits).
+
+The list of known vulnerabilities can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Vulnerabilities_list_tokenomics.pdf?raw=true).
+
+## Lockbox-Solana
+cd into sub repo:
+```
+cd lockbox-solana
+```
+
+Install rust:
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Install solana:
+```
+sh -c "$(curl -sSfL https://release.solana.com/v1.17.7/install)"
+```
+
+Install anchor:
+```
+cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
+avm install 0.29.0
+avm use 0.29.0
+```
+
+Install the project:
+```
+yarn install
+```
+
+Build the code with:
+```
+anchor build
+```
+
+Run the validator in a separate window:
+```
+./validator.sh
+```
+
+Execute the testing script:
+```
+solana airdrop 10000 9fit3w7t6FHATDaZWotpWqN7NpqgL3Lm1hqUop4hAy8h --url localhost && anchor test --skip-local-validator --skip-build
+```
+
+Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/audits).
+
+The list of known vulnerabilities can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Vulnerabilities_list_tokenomics-solana.pdf?raw=true).
+
+:warning: **Warning** <br />
+The current version of the code fails when doing a CPI call to the Orca Whirlpool program in the `withdraw()` function.
+The issue is described here: [CPI issue](https://github.com/hyperledger/solang/issues/1610).
+For the moment, the `withdraw()` function testing is wrapped into a `try-catch` logic.
 
 
