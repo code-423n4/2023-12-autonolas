@@ -411,6 +411,8 @@ The following are relevant for tokenomics related contract:
 
 # Tests
 
+The standard versions of Node.js along with Yarn are required (confirmed to work with Yarn `1.22.19` and npx/npm `10.2.0` and node `v16.20.2`).
+
 ## Governance
 cd into sub repo:
 ```
