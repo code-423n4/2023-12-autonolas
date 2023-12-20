@@ -276,8 +276,8 @@ The following are relevant for tokenomics related contract:
 # External imports
 
 - @openzeppelin/contracts/utils/introspection/IERC165.sol
-    - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
-    - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)
 
 - @openzeppelin/contracts/governance/Governor.sol
   - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
@@ -321,12 +321,12 @@ The following are relevant for tokenomics related contract:
   - [tokenomics/contracts/GenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/GenericBondCalculator.sol)
 
 - @prb/math/src/UD60x18.sol
-    - [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/TokenomicsConstants.sol)
+  - [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/TokenomicsConstants.sol)
 
 - @whirlpools
-  -  [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)
+  - [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)
 
-- @solana/blob/master/tokens/src/spl_token.rs
+- @solana
   - [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)  
 
 
