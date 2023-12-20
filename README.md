@@ -181,7 +181,7 @@ The following are relevant for tokenomics related contract:
 | [governance/contracts/bridges/test/FxRootMock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/test/FxRootMock.sol)             |  | | |
 | [governance/contracts/bridges/test/MockAMBMediator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/test/MockAMBMediator.sol)    |  | | |
 | Registries contracts (3)                                                                                                                                                   | | | |
-| [registries/contracts/test/ComponentRegistryTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ComponentRegistryTest.sol])      |  | | |
+| [registries/contracts/test/ComponentRegistryTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ComponentRegistryTest.sol)      |  | | |
 | [registries/contracts/test/GnosisSafeABICreator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/GnosisSafeABICreator.sol)         |  | | |
 | [registries/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ReentrancyAttacker.sol)             |  | | |
 | Tokenomics contracts (11)                                                                                                                                                  | | | |
