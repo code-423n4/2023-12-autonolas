@@ -1,14 +1,13 @@
 # Autonolas audit details
-- Total Prize Pool: XXX XXX USDC (Notion: Total award pool)
-  - HM awards: XXX XXX USDC (Notion: HM (main) pool)
-  - Analysis awards: XXX XXX USDC (Notion: Analysis pool)
-  - QA awards: XXX XXX USDC (Notion: QA pool)
-  - Bot Race awards: XXX XXX USDC (Notion: Bot Race pool)
-  - Gas awards: XXX XXX USDC (Notion: Gas pool)
-  - Judge awards: XXX XXX USDC (Notion: Judge Fee)
-  - Lookout awards: XXX XXX USDC (Notion: Sum of Pre-sort fee + Pre-sort early bonus)
-  - Scout awards: $500 USDC (Notion: Scout fee - but usually $500 USDC)
-  - (this line can be removed if there is no mitigation) Mitigation Review: XXX XXX USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
+- Total Prize Pool: $90,500
+  - High/Medium: $61,875 USDC
+  - Bot Race report awards: $5,625 USDC
+  - Analysis report awards: $3,750 USDC
+  - QA report awards: $1,875 USDC
+  - Gas report awards: $1,875 USDC
+  - Judge award: $9,000 USDC
+  - Lookout awards: $6,000 USDC
+  - Scout award: $500 USDC
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2023-12-autonolas/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
