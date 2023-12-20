@@ -180,7 +180,6 @@ The following are relevant for tokenomics related contract:
 | [governance/contracts/bridges/test/ChildMockERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/test/ChildMockERC20.sol)     |  | | |
 | [governance/contracts/bridges/test/FxRootMock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/test/FxRootMock.sol)             |  | | |
 | [governance/contracts/bridges/test/MockAMBMediator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/test/MockAMBMediator.sol)    |  | | |
-| [governance/contracts/bridges/test/MockTimelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/brides/test/MockTimelock.sol)          |  | | |
 | Registries contracts (3)                                                                                                                                                   | | | |
 | [registries/contracts/test/ComponentRegistryTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ComponentRegistryTest.sol])      |  | | |
 | [registries/contracts/test/GnosisSafeABICreator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/GnosisSafeABICreator.sol)         |  | | |
