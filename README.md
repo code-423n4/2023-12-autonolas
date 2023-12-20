@@ -457,7 +457,7 @@ Run tests with gas report:
 npx hardhat test
 ```
 :warning: **Warning** <br />
-Note that due to some missing interaction with service registries, test coverage can show lower percentage. To check full coverage check https://github.com/valory-xyz/autonolas-registries/tree/pre-c4a 
+Note that due to some missing interaction with service registries (not part of the audit), test coverage can show lower percentage. To confirm the full coverage check https://github.com/valory-xyz/autonolas-registries/tree/pre-c4a 
 
 Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/audits).
 
