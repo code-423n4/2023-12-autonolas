@@ -76,7 +76,7 @@ Whenever necessary additional contracts are deployed to enable bonding participa
 The following folders containing audit-related materials associated with development progresses.
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/audits  
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/audits 
-- https://github.com/code-423n4/2023-12-autonolas/tree/main/tokenomics/audits
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/audits
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/audits 
 
 - **Documentation:**
