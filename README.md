@@ -300,16 +300,16 @@ The following are relevant for tokenomics related contract:
 
 - @solmate/src/tokens/ERC20.sol
   - [governance/contracts/OLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/OLAS.sol)
-  - [governance/contracts/BridgedERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/BridgedERC20.sol)
+  - [governance/contracts/bridges/BridgedERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/BridgedERC20.sol)
 
 - @solmate/src/tokens/ERC721.sol
   - [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/GenericRegistry.sol) 
 
 - @fx-portal/contracts/tunnel/FxBaseChildTunnel.sol 
-  - [governance/contracts/FxERC20ChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20ChildTunnel.sol)
+  - [governance/contracts/bridges/FxERC20ChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20ChildTunnel.sol)
 
 - @fx-portal/contracts/tunnel/FxBaseRootTunnel.sol 
-  - [governance/contracts/FxERC20RootTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20RootTunnel.sol)
+  - [governance/contracts/bridges/FxERC20RootTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20RootTunnel.sol)
 
 - @openzeppelin/contracts/governance/utils/IVotes.sol
   - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)
@@ -389,7 +389,7 @@ The following are relevant for tokenomics related contract:
 - Does it use an oracle?:  No
 
 - Describe any novel or unique curve logic or mathematical models your code uses: 
-  - Our governance token veOLAS adopts a similar approach to veCRV, where votes are weighted depending on the time OLAS is locked other than the amount of locked OLAS. The maximum voting power for a fixed amount of locked OLAS can be achieved with the longest lock. In mathematical terms, voting power is calculated as amount * time_locked / MAXTIME. An overview of the governance process can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/governance/docs/Governance_process.pdf )
+  - Our governance token veOLAS adopts a similar approach to veCRV, where votes are weighted depending on the time OLAS is locked other than the amount of locked OLAS. The maximum voting power for a fixed amount of locked OLAS can be achieved with the longest lock. In mathematical terms, voting power is calculated as amount * time_locked / MAXTIME. An overview of the governance process can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Governance_process.pdf )
   - A brief overview of the tokenomics model can be found here https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Autonolas_tokenomics_audit.pdf. For more details, see the Tokenomics paper (cf. https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf). 
 
 - A brief overview of the liquidity-loxcbox wrapper and the motivation for it can be found can be found here https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Bonding_mechanism_with_liquidity_on_Solana.pdf
