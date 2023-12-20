@@ -47,7 +47,7 @@ Governance keys components are: a governance module, a Timelock, veOLAS. These c
 community-owned multisig wallet (CM), bypassing the governance process. To align CM actions with the DAO’s intent and ensure their reversibility, a guard mechanism was introduced (see [aip-3](https://github.com/valory-xyz/autonolas-aip/blob/aip-3/content/aips/core-enhancing-autonolas-protocol-security.md) for more details) 
 
 The core governance coordination mechanisms are anchored on a single chain. However, due to Autonolas’ multi-chain
-focus, Autonolas employs cross-chain governance to enable governance actions between Ethereum (L1) and L2 networks like Polygon and Gnosis Chain at present, and others in the future. For cross-chain governance, Autonolas sends messages from Ethereum-based governance contracts to the target chains, employing mechanisms like the [FxPortal](https://github.com/0xPolygon/fx-portal/tree/v1.0.5) for Polygon and [Arbitrary Message Bridge (AMB)](https://docs.gnosischain.com/bridges/tokenbridge/amb-bridge) for Gnosis Chain. Further details on Autonolas cross-chain bridging design can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/governance_bridge.pdf). Whenever necessary, supplemented contracts are implemented for L1-L2 token transfers, such us the contracts enabling transfers of token deployed on Polygon to Ethereum and vice-versa based on a [Polygon-native FxPortal](https://github.com/fx-portal/contracts). Motivations and design overview of token bridging between Polygon and Ethereum can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Bonding_mechanism_with_Polygon_LP_token.pdf) 
+focus, Autonolas employs cross-chain governance to enable governance actions between Ethereum (L1) and L2 networks like Polygon and Gnosis Chain at present, and others in the future. For cross-chain governance, Autonolas sends messages from Ethereum-based governance contracts to the target chains, employing mechanisms like the [FxPortal](https://github.com/0xPolygon/fx-portal/tree/v1.0.5) for Polygon and [Arbitrary Message Bridge (AMB)](https://docs.gnosischain.com/bridges/tokenbridge/amb-bridge) for Gnosis Chain. Further details on Autonolas cross-chain bridging design can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/governace_bridge.pdf). Whenever necessary, supplemented contracts are implemented for L1-L2 token transfers, such us the contracts enabling transfers of token deployed on Polygon to Ethereum and vice-versa based on a [Polygon-native FxPortal](https://github.com/fx-portal/contracts). Motivations and design overview of token bridging between Polygon and Ethereum can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Bonding_mechanism_with_Polygon_LP_token.pdf) 
 
 
 **Registries** allow developer of code in form of agents, components, or services to register and manage their code on-chain. The code existing off-chain will be uniquely represented on-chain by means of NFTs. The registries part under audit is focussed on registrations and management of agents and components (off-chain) code  uniquely represented on chain as NFTs. A summary of registries is provided [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/AgentServicesFunctionality.pdf) 
@@ -66,7 +66,7 @@ For enabling bonding of pairs on different chains the following workflow is used
 - Transfer the LP-token back to Ethereum using the same bridge methods.
 - Use the transferred LP-token for bonding in Autonolas' mechanism on Ethereum.
 
-Whenever necessary additional contracts are deployed to enable seamless bonding participation. This is the case for enabling bonding on Solana. Specifically, [Orca](https://docs.orca.so/) AMM to create the LP-token can be used on Solana. Despite the possibility of creating full [range deposit](https://docs.orca.so/reference/full-range-deposit-pools) with Orca, LPs retain the ability to provide concentrated liquidity within a specific range, and as representations of their liquidity they receive non-fungible tokens. To ensure compatibility with the existing depository model the contract is designed to encapsulate concentrated liquidity from Orca whirlpool contract and represent the liquidity with a full range with fungible tokens. More details and an overview of the design can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Bonding_mechanism_with_liquidity_on_Solana.pdf).
+Whenever necessary additional contracts are deployed to enable bonding participation. This is the case for enabling bonding on Solana. Specifically, [Orca](https://docs.orca.so/) AMM to create the LP-token can be used on Solana. Despite the possibility of creating full [range deposit](https://docs.orca.so/reference/full-range-deposit-pools) with Orca, LPs retain the ability to provide concentrated liquidity within a specific range, and as representations of their liquidity they receive non-fungible tokens. To ensure compatibility with the existing depository model a liquidity-lockbox contract is designed to encapsulate concentrated liquidity from Orca whirlpool contract and represent the liquidity with a full range with fungible tokens. More details and an overview of the design can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Bonding_mechanism_with_liquidity_on_Solana.pdf).
 
 
 ## Links
@@ -75,7 +75,7 @@ Whenever necessary additional contracts are deployed to enable seamless bonding 
 The following folders containing audit-related materials associated with development progresses.
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/audits  
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/audits 
-- https://github.com/code-423n4/2023-12-autonolas/blob/main/tokemomics/audits 
+- https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/audits
 - https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/audits 
 
 - **Documentation:**
@@ -99,7 +99,7 @@ The following are relevant for tokenomics related contract:
 - [Summary of tokenomics model](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Autonolas_tokenomics_audit.pdf) 
 - [Autonolas tokenomics paper](https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf)
 - [Autonolas whitepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf) 
-- Uniswap-v2 like pairs can be used for the depository contract, [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokeomics/docs/LP_token_guide.md ) an illustrative guide 
+- Uniswap-v2 like pairs can be used for the depository contract, [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/LP_token_guide.md) an illustrative guide 
 
 - **Website:** https://olas.network/  
 
@@ -112,10 +112,10 @@ The following are relevant for tokenomics related contract:
 
 ## Files in scope
 
-| Contract                                                                                                                                                                                        | SLOC | Purpose                                                                                                                                             | Libraries used |  
+| Contract                                                                                                                                                                                        | SLOC | Purpose                                                                                                                                             | Libraries used |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----------- |-----------------------------------------------------------------------------------------------------------------------------------------------------| ----------- |
 | Governance contracts (11)                                                                                                                                                                       | |                                                                                                                                                     | |
-| [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)                                                         | 70 | This contract is the governance module contract                                                                                                     | [`@openzeppelin/*`](https://openzeppelin.com/contracts/GovernorOLAS.sol)  |
+| [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)                                                         | 70 | This contract is the governance module contract                                                                                                     | [`@openzeppelin/*`](https://openzeppelin.com)  |
 | [governance/contracts/Timelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/Timelock.sol)                                                                 | 7| This enforces a time delay on all the proposal executions.                                                                                          | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
 | [governance/contracts/OLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/OLAS.sol)                                                                         | 82 | ERC20 token enabling the core functionalities of the protocol                                                                                       | [`solmate/*`](https://github.com/transmissions11/solmate) |
 | [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)                                                                     | 462 | veOLAS is a virtualized representation of the locked OLAS                                                                                           | [`@openzeppelin/*`](https://openzeppelin.com/contracts/)|
@@ -130,7 +130,7 @@ The following are relevant for tokenomics related contract:
 | [governance/contracts/interfaces/IERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/interfaces/IERC20.sol)                                               | 11 | ERC20 token interface                                                                                                                               | |
 | [governance/contracts/interfaces/IErrors.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/interfaces/IErrors.sol)                                             | 19 | Errors interface                                                                                                                                    | |
 | Registries contracts (8)                                                                                                                                                                        | |                                                                                                                                                     | |
-| [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/GenericRegistry.sol)                                                  | 75 | Smart contract for generic registry template                                                                                                        | [`solmate/*`](https://github.com/transmissions11/solmate)   |
+| [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/GenericRegistry.sol)                                                  | 75 | Smart contract for generic registry template                                                                                                        | [`solmate/*`](https://github.com/transmissions11/solmate)  |
 | [registries/contracts/UnitRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/UnitRegistry.sol)                                                        |151| Smart contract for registering units (either agent or components)                                                                                   | |
 | [registries/contracts/ComponentRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/ComponentRegistry.sol)                                              | 26 | Smart contract for registering components                                                                                                           | |
 | [registries/contracts/AgentRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/AgentRegistry.sol)                                                      | 41 | Smart contract for registering agents                                                                                                               | |
@@ -162,7 +162,7 @@ The following are relevant for tokenomics related contract:
 | [tokenomics/contracts/interfaces/IUniswapV2Pair.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IUniswapV2Pair.sol)                              | 7 | Uniswap v2 related interface                                                                                                                        | |
 | [tokenomics/contracts/interfaces/IVotingEscrow.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/interfaces/IVotingEscrow.sol)                                | 4 | Interface for veOLAS (voting escrow)                                                                                                                | |
 | Lockbox Solana contracts (1)                                                                                                                                                                    | |                                                                                                                                                     | |
-| [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)                                        | 260 | Smart contract for encapsulating concentrated liquidity from Orca whirlpool contract and represent the full range liquidity with fungible tokens    | [`whirlpool`](https://github.com/orca-so/whirlpools)
+| [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)                                        | 260 | Smart contract for encapsulating concentrated liquidity from Orca whirlpool contract and represent the full range liquidity with fungible tokens    | [`whirlpool`](https://github.com/orca-so/whirlpools)|
 | Lockbox Solana library (1)                                                                                                                                                                      | |                                                                                                                                                     | |
 | [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)                                        | 77 | This library provides a way for Solidity to interact with Solana's SPL-Token                                                                        | [`SplToken`](https://github.com/solana-labs/solana/blob/master/tokens/src/spl_token.rs)|
 
@@ -171,7 +171,7 @@ The following are relevant for tokenomics related contract:
 
 | File                                                                                                                                                                       | SLOC | Purpose | Libraries used |  
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----------- | ----------- | ----------- |
-| Governance contracts (11)                                                                                                                                                  | | | |
+| Governance contracts (8)                                                                                                                                                   | | | |
 | [governance/contracts/test/BridgeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/test/BridgeSetup.sol)                           |  | | |
 | [governance/contracts/test/BrokenERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/test/BrokenERC20.sol)                           |  | | |
 | [governance/contracts/test/SafeSetup.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/test/SafeSetup.sol)                               |  | | |
@@ -187,9 +187,10 @@ The following are relevant for tokenomics related contract:
 | [registries/contracts/test/ComponentRegistryTest.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ComponentRegistryTest.sol])      |  | | |
 | [registries/contracts/test/GnosisSafeABICreator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/GnosisSafeABICreator.sol)         |  | | |
 | [registries/contracts/test/ReentrancyAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/test/ReentrancyAttacker.sol)             |  | | |
-| Tokenomics contracts (10)                                                                                                                                                  | | | |
+| Tokenomics contracts (11)                                                                                                                                                  | | | |
 | [tokenomics/contracts/test/DepositAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/DepositAttacker.sol)                   |  | | |
 | [tokenomics/contracts/test/ERC20Token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/ERC20Token.sol)                             |  | | |
+| [tokenomics/contracts/test/FlashLoanAttacker.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/FlashLoanAttacker.sol)               |  | | |
 | [tokenomics/contracts/test/MockRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/MockRegistry.sol)                         |  | | |
 | [tokenomics/contracts/test/MockTokenomics.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/MockTokenomics.sol)                     |  | | |
 | [tokenomics/contracts/test/MockVE.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/test/MockVE.sol)                                     |  | | |
@@ -205,57 +206,57 @@ The following are relevant for tokenomics related contract:
 # External imports
 
 - @openzeppelin/contracts/utils/introspection/IERC165.sol
-    - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
-    - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/veOLAS.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)
 
 - @openzeppelin/contracts/governance/Governor.sol
-  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
 
 - @openzeppelin/contracts/governance/extensions/GovernorSettings.sol
-  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
 
 - @openzeppelin/contracts/governance/compatibility/GovernorCompatibilityBravo.sol
-  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
 
 - @openzeppelin/contracts/governance/extensions/GovernorVotes.sol
-  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
 
 - @openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol
-  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
 
 - @openzeppelin/contracts/governance/extensions/GovernorTimelockControl.sol
-  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/GovernorOLAS.sol)
-  - [governance/contracts/Timelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/Timelock.sol)
+  - [governance/contracts/GovernorOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/GovernorOLAS.sol)
+  - [governance/contracts/Timelock.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/Timelock.sol)
 
 - @solmate/src/tokens/ERC20.sol
-  - [governance/contracts/OLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/OLAS.sol)
-  - [governance/contracts/BridgedERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/BridgedERC20.sol)
+  - [governance/contracts/OLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/OLAS.sol)
+  - [governance/contracts/bridges/BridgedERC20.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/BridgedERC20.sol)
 
 - @solmate/src/tokens/ERC721.sol
-  - [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/registries/contracts/GenericRegistry.sol) 
+  - [registries/contracts/GenericRegistry.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/contracts/GenericRegistry.sol) 
 
 - @fx-portal/contracts/tunnel/FxBaseChildTunnel.sol 
-  - [governance/contracts/FxERC20ChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/FxERC20ChildTunnel.sol)
+  - [governance/contracts/bridges/FxERC20ChildTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20ChildTunnel.sol)
 
 - @fx-portal/contracts/tunnel/FxBaseRootTunnel.sol 
-  - [governance/contracts/FxERC20RootTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/FxERC20RootTunnel.sol)
+  - [governance/contracts/bridges/FxERC20RootTunnel.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/bridges/FxERC20RootTunnel.sol)
 
 - @openzeppelin/contracts/governance/utils/IVotes.sol
-  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/veOLAS.sol)
+  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)
 
 - @openzeppelin/contracts/token/ERC20/IERC20.sol
-  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/governance/contracts/veOLAS.sol)
+  - [governance/contracts/veOLAS.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/contracts/veOLAS.sol)
 
 - @prb/math/src/Common.sol
-  - [tokenomics/contracts/GenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/GenericBondCalculator.sol)
+  - [tokenomics/contracts/GenericBondCalculator.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/GenericBondCalculator.sol)
 
 - @prb/math/src/UD60x18.sol
-    - [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/contracts/TokenomicsConstants.sol)
+  - [tokenomics/contracts/TokenomicsConstants.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/contracts/TokenomicsConstants.sol)
 
 - @whirlpools
-  -  [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)
+  - [lockbox-solana/solidity/liquidity_lockbox.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/liquidity_lockbox.sol)
 
-- @solana/blob/master/tokens/src/spl_token.rs
+- @solana
   - [lockbox-solana/solidity/library/spl_token.sol](https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/solidity/library/spl_token.sol)  
 
 
@@ -270,7 +271,7 @@ The following are relevant for tokenomics related contract:
 - https://github.com/valory-xyz/autonolas-tokenomics-solana/tree/pre-c4a 
 
 - How many contracts are in scope?: 43
-- Total SLoC for these contracts?: 3811 
+- Total SLoC for these contracts?: 3817 
 - How many external imports are there?: 17
   - governance: @solmate/src/tokens/ERC20, OZ timelock controller, OZ IERC165, OZ governor, OZ governorSetting, OZ GovernorCompatibilityBravo, OZ GovernorVotes, OZ GovernorQuorumFraction, OZ IERC20, OZ IVotes, FxBaseChildTunnel.sol, FxBaseRootTunnel.sol, gnosis safe Enum.sol
   - registries: @solmate/src/tokens/ERC721.so
@@ -318,19 +319,19 @@ The following are relevant for tokenomics related contract:
 - Does it use an oracle?:  No
 
 - Describe any novel or unique curve logic or mathematical models your code uses: 
-  - Our governance token veOLAS adopts a similar approach to veCRV, where votes are weighted depending on the time OLAS is locked other than the amount of locked OLAS. The maximum voting power for a fixed amount of locked OLAS can be achieved with the longest lock. In mathematical terms, voting power is calculated as amount * time_locked / MAXTIME. An overview of the governance process can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/governance/docs/Governance_process.pdf )
-  - A brief overview of the tokenomics model can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/tokenomics/docs/Autonolas_tokenomics_audit.pdf.) For more details, see the [Tokenomics paper](https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf). 
+  - Our governance token veOLAS adopts a similar approach to veCRV, where votes are weighted depending on the time OLAS is locked other than the amount of locked OLAS. The maximum voting power for a fixed amount of locked OLAS can be achieved with the longest lock. In mathematical terms, voting power is calculated as amount * time_locked / MAXTIME. An overview of the governance process can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/governance/docs/Governance_process.pdf )
+  - A brief overview of the tokenomics model can be found here https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/docs/Autonolas_tokenomics_audit.pdf. For more details, see the Tokenomics paper (cf. https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf). 
 
-- A brief overview of the liquidity-loxcbox wrapper and the motivation for it can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/lockbox-solana/docs/Bonding_mechanism_with_liquidity_on_Solana.pdf)
+- A brief overview of the liquidity-loxcbox wrapper and the motivation for it can be found can be found here https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/docs/Bonding_mechanism_with_liquidity_on_Solana.pdf
 
-- A brief overview of registries can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/registries/docs/AgentServicesFunctionality.pdf) 
+- A brief overview of registries can be found here https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/AgentServicesFunctionality.pdf. 
 
 
 - Is this either a fork of or an alternate implementation of another project?: No
 
 - Does it use a side-chain?: Yes
 
-- Describe any specific areas you would like addressed: Funds at risk, OLAS token robustness, security governance, bridges, CMguard contracts, correct behaviour, intended registries behaviour   
+- Describe any specific areas you would like addressed: Funds at risk, OLAS token robustness, security of governance contracts, bridges security , CMguard contracts, correct behaviour, intended registries behaviour   
 
 ```
 
@@ -385,10 +386,13 @@ Run tests with gas report:
 ```
 npx hardhat test
 ```
+:warning: **Warning** <br />
+Note that due to some missing interaction with service registries (not part of the audit), test coverage can show lower percentage. To confirm the full coverage check https://github.com/valory-xyz/autonolas-registries/tree/pre-c4a 
 
 Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/audits).
 
 The list of known vulnerabilities can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/registries/docs/Vulnerabilities_list_registries.pdf?raw=true).
+
 
 ## Tokenomics
 cd into sub repo:
@@ -401,8 +405,6 @@ Install the project:
 yarn install
 ```
 
-Install [Foundry](https://book.getfoundry.sh/getting-started/installation) in order to test contracts with it along with Hardhat tests.
-
 Compile the code:
 ```
 npm run compile
@@ -411,11 +413,6 @@ npm run compile
 Run tests with Hardhat and gas report:
 ```
 npx hardhat test
-```
-
-Run tests with Foundry:
-```
-forge test --hh -vv
 ```
 
 Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/audits).
