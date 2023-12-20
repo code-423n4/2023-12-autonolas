@@ -475,8 +475,6 @@ Install the project:
 yarn install
 ```
 
-Install [Foundry](https://book.getfoundry.sh/getting-started/installation) in order to test contracts with it along with Hardhat tests.
-
 Compile the code:
 ```
 npm run compile
@@ -485,11 +483,6 @@ npm run compile
 Run tests with Hardhat and gas report:
 ```
 npx hardhat test
-```
-
-Run tests with Foundry:
-```
-forge test --hh -vv
 ```
 
 Audit findings are located [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/tokenomics/audits).
