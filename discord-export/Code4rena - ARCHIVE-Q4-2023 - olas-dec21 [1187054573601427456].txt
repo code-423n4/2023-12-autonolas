@@ -1,0 +1,1289 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q4-2023 / olas-dec21
+==============================================================
+
+[12/20/2023 22:41] knownfactc4_29311 (pinned)
+👋 Hello and welcome to the audit channel for the $90,500 in USDC **Olas** audit!
+
+📆 Audit opens 12/21/2023 20:00 (20:00 UTC) and runs through 01/08/2024 20:00 (20:00 UTC) (18 days).
+
+Please give a warm welcome to the Olas team, particularly @kupermind, @david_enim, @Pi, and @andreyleb who will be available for questions either here in the channel or via DM in the CET timezone.
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/audits/2023-12-olas
+
+{Reactions}
+bolt_discord_emoji (20) 
+
+[12/21/2023 20:00] dimulski
+👀
+
+
+[12/21/2023 20:02] C4 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Reminder: all [Automated Findings / Publicly Known Issues](https://github.com/code-423n4/2023-12-autonolas?tab=readme-ov-file#automated-findings--publicly-known-issues) are out of scope and ineligible for awards.
+
+{Embed}
+https://github.com/code-423n4/2023-12-autonolas?tab=readme-ov-file
+GitHub - code-423n4/2023-12-autonolas
+Contribute to code-423n4/2023-12-autonolas development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/65c0f47a-3bd4-4a2a-aded-610befcd3858-B24CE
+
+{Reactions}
+👍 (4) 
+
+[12/21/2023 20:28] thebrittfactor
+Pinned a message.
+
+
+[12/21/2023 20:37] knownfactc4_29311
+Pinned a message.
+
+
+[12/22/2023 06:14] dimulski
+does the code in scope have a bug bounty on immunefi?
+
+
+[12/22/2023 06:59] HarryFutures#5097
+Anyone with related resource?👩‍💻
+
+
+[12/22/2023 07:10] david_enim
+It used to. For the contest the bounty is paused.
+
+{Reactions}
+👍 (2) 
+
+[12/22/2023 07:10] david_enim
+Please check the repo. Lots of resources linked in there. We’ll share some high level intros in the coming days
+
+
+[12/22/2023 13:14] thetechnofeak
+@david_enim  I find it difficult to grasp the concept of registries in Autonolas? Additionally, what's the significance of assigning NFTs to off-chain codes rather than having them directly on the blockchain? What purpose does this NFT assignment serve?
+
+
+[12/22/2023 14:38] david_enim
+First a point on context:
+
+- the Olas protocol has three parts to it: 1) governance, 2) registries, 3) tokenomics. Both 1 & 3 are fully covered by the contest. 2 is only covered partially (i.e. the whole service level is excluded). This decision was made as the code base is already very large and it makes sense to break it up into potentially more than one contest.
+
+Re your question:
+
+- there are three types of registries: component, agent and service. The third one being excluded from the contest as per point above.
+- the NFTs represent off-chain code on-chain and are heavily used in some of the tokenomics, specifically the developer rewards mechanism. You can find all the details (also linked from audit repo) in the tokenomics paper and whitepaper (https://www.autonolas.network/whitepaper). We'll also provide some introductions in the coming days ...
+- simple use case example: dev owns a component NFT. If a service referencing this NFT as a dependency gets so called donations then at the end of the epoch the component accrues dev rewards. Donations happen either out of pure goodwill or because the donator has an incentive to incentivise the dev (e.g. the Olas DAO wants to incentivise developers contributing to services owned by the Olas DAO)
+
+
+[12/22/2023 17:30] stryder1496
+i am getting this error
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/image-45953.png
+
+
+[12/22/2023 17:34] david_enim
+@kupermind is best placed to support here
+
+
+[12/22/2023 17:54] kupermind
+I believe your openzeppelin is of higher version than 4.8.3. Is there a chance you have omitted the `yarn.lock` file from the `governance` subfolder?
+
+
+[12/22/2023 19:32] adeolu
+the olas bridge contracts  are meant for all evm chains?  @kupermind
+
+
+[12/22/2023 19:39] Message Wolf#0225 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-12-autonolas/blob/main/bot-report.md).
+
+*Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
+
+
+[12/22/2023 19:40] kupermind
+HomeMediator is for Gnosis chain, Fx... ones are for Polygon PoS
+
+
+[12/22/2023 19:49] adeolu
+okay thank you
+
+{Reactions}
+🙏 
+
+[12/22/2023 19:51] liveactionllamac4
+Pinned a message.
+
+
+[12/23/2023 05:51] mrpotatomagic
+bot report md preview seems to be broken
+https://github.com/code-423n4/2023-12-autonolas/blob/main/bot-report.md
+
+
+[12/23/2023 06:08] mrpotatomagic
+is liquidity_lockbox.sol and spl_token.sol in scope? It is not included in the scope.txt but is on the files in scope table in the README
+
+
+[12/23/2023 07:26] kupermind
+They are listed in scope
+
+{Reactions}
+👍 
+
+[12/23/2023 08:15] stryder1496
+yarn.lock file is present in the subfolder i checked it
+
+
+[12/23/2023 08:29] stryder1496
+can you tell me the version that you guys are using in your contracts ?
+
+
+[12/23/2023 08:33] kupermind
+They are starting from 0.8.15 in governance, however all are compiled with 0.8.23 by default as specified in hardhat config
+
+
+[12/23/2023 09:51] stryder1496
+so the version was set as ^4.9.5 in package-lock.json but i changed it to "        "@openzeppelin/contracts": "4.8.3" but the same error is showing up
+
+
+[12/23/2023 09:58] kupermind
+I am not sure why it's set in the package-lock.json, which is not part of the repo. You have changed the version in it, but it seems like you have not rebuilt. Please remove node_modules folder completely, then run yarn again
+
+
+[12/23/2023 09:59] stryder1496
+oh makes sense
+
+
+[12/23/2023 09:59] stryder1496
+lemme try that
+
+{Reactions}
+🙏 
+
+[12/23/2023 18:30] david_enim
+Hey 👋- I just published this high level intro on X which contextualises the different components https://x.com/david_enim/status/1738627142382997991?s=46
+
+{Reactions}
+🔥 (6) 
+
+[12/23/2023 18:30] david_enim
+Feedback welcome 🙏 - whilst all the info is referenced in the repo I’m happy to provide further high level summaries of this type if it helps anyone here.
+
+
+[12/23/2023 19:51] 0x73696d616f
+220 years ahead, impressive
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/image-6BCE8.png
+
+{Reactions}
+😄 
+
+[12/24/2023 08:00] nmirchev8
+Hey,
+Is there any new part of the code, which is the focus of this audit, because I saw that there are some old audits and also Imunify submissions.
+
+
+[12/24/2023 08:37] pi_disc
+Hey @nmirchev8 majority of contracts were already audited and were part of immunefi. The new GuardCM implementation ( in governance/contracts/multisigs ) and the  lockbox-solana solidity contracts were only internally audited and were not part of immunefy yet
+
+{Reactions}
+✅ 
+
+[12/24/2023 09:28] 0xnirlin
+what does without mapping means in fx portal:
+
+```
+In short, this bridge allows arbitrary message bridging without mapping, with built-in support for a number of token standards.
+```
+
+
+[12/24/2023 10:32] kupermind
+Mapping meant deploying a mirror token on Polygon PoS, if one does not exist. In the case of our contracts, there is no mapping, just a message passing bridge delivering token info of already pre-defined tokens on both sides of the bridge
+
+
+[12/24/2023 18:34] spacecake8961
+Hello 👋 Beginner here and looking to get feedback or help on my approach if possible.
+I have cloned the repository, successfully ran tests for Governance, Tokenomics and Registries.
+Next I am thinking to do the following:
+1. Deploy the smart contracts locally: I have Ganache installed and ready but was not able to deploy Governance smart contracts on it yet. I tried the command `npx hardhat deploy` after pointing the Hardhat configuration to my local Ganache RPC server. Additionally, I found this separate Governance repository with deployment scripts (https://github.com/valory-xyz/autonolas-governance) but  I am not too sure if I should use them or if it is getting out of scope
+2. Interact with the deployed smart contracts following usage scenarios, which I am going to be researching after.
+
+I would love any type of feedback to this methodology. Keep in mind I am new to Web3 auditing, and a Web2 developer 🙂
+
+
+[12/24/2023 19:20] kupermind
+Hello, please refer to README-s in each of the subrepos, specifically to the deployment section, like this one here:
+https://github.com/code-423n4/2023-12-autonolas/tree/main/governance#deployment-of-core-contracts
+
+{Embed}
+https://github.com/code-423n4/2023-12-autonolas/tree/main/governance
+2023-12-autonolas/governance at main · code-423n4/2023-12-autonolas
+Contribute to code-423n4/2023-12-autonolas development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/65c0f47a-3bd4-4a2a-aded-610befcd3858-B24CE
+
+
+[12/24/2023 19:22] kupermind
+In original repositories we have mentions about deployment of all the smart contracts. Also, they have scripts for each and every smart contract deployment. FYI I would like to mention here again those are not parts of the c4a audit, but can serve as a supplement material for these specific needs.
+
+
+[12/24/2023 19:23] kupermind
+There is also a README in each of the `scripts/deployment` folder, like the one here, with the detailed instruction of how the scripts are configured and run:
+https://github.com/valory-xyz/autonolas-governance/tree/main/scripts/deployment
+
+{Embed}
+https://github.com/valory-xyz/autonolas-governance/tree/main/scripts/deployment
+autonolas-governance/scripts/deployment at main · valory-xyz/autono...
+This repository contains the Autonolas OLAS token and the governance part of the autonolas-v1 protocol. - valory-xyz/autonolas-governance
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/autonolas-governance-73FDE
+
+
+[12/24/2023 19:52] kupermind
+In order to deploy locally, just run a local node in a separate window, then use any combination of scripts to deploy all needed contracts
+
+{Reactions}
+🙏 (2) 
+
+[12/25/2023 10:22] thetechnofeak
+about the registry part , not very clear but still thanks for the explanation !
+
+
+[12/26/2023 06:55] guy_in0xnito
+Are there any charts or flows giving a context on the codebase ( although not went through the whole codebase )?
+
+
+[12/26/2023 07:33] kupermind
+Yes, please check out the README of each of the subfolder, and also the docs folder
+
+{Reactions}
+👍🏻 
+
+[12/26/2023 15:53] nmirchev8
+Also the whitepaper has some pretty good diagrams
+
+{Reactions}
+👍🏻 
+
+[12/26/2023 15:59] david_enim
+Hi wardens, wondering if there's appetite for a call with some Q&A. If you'd like one, please react with ☎️ to this message.
+
+{Reactions}
+☎️ (11) 
+
+[12/26/2023 16:54] 0xfave
+@kupermind after deposit olas token to get veOla is there any use fr the token apart from been able to vote?
+
+
+[12/26/2023 16:56] david_enim
+Another thread to contextualise the audit: https://x.com/david_enim/status/1739688285234979006?s=20
+
+
+[12/26/2023 17:00] david_enim
+Please select preferred time - we will go with majority and then record for async viewing.
+
+1️⃣ - 27th, 3pm CET
+2️⃣ - 27th, 5:30pm CET
+3️⃣ - 28th, 2pm CET
+
+{Reactions}
+2️⃣ (6) 
+
+[12/26/2023 17:14] kupermind
+It's for voting and recording voting power only ATM
+
+
+[12/26/2023 17:30] masol_66728
+wait so the contracts have already been audited?
+
+
+[12/26/2023 17:45] kupermind
+Not all of them. We have had several internal and external audits as the code has been changing
+
+
+[12/26/2023 17:56] david_enim
+C4R Olas Q&A
+Wednesday, December 27 · 5:30 – 6:00pm
+Time zone: CET
+Google Meet joining info
+Video call link: https://meet.google.com/ewk-pphn-bfw
+Or dial: ‪(DE) +49 30 300195060‬ PIN: ‪144 171 415 4660‬#
+More phone numbers: https://tel.meet/ewk-pphn-bfw?pin=1441714154660
+
+{Reactions}
+👍 (4) ❤️ 
+
+[12/26/2023 22:30] trachev
+@david_enim should we send direct messages or start private threads when asking questions related to possible issues?
+
+
+[12/26/2023 23:42] kupermind
+It's up to you really
+
+
+[12/27/2023 09:01] trachev
+Cool, sent a DM
+
+
+[12/27/2023 12:53] sweetcat0118
+@david_enim How can I test this project on Windows?
+
+
+[12/27/2023 12:58] sweetcat0118
+Is there a way to test on windows for tokenomics?
+
+
+[12/27/2023 12:58] sweetcat0118
+Should I install linux for that?
+
+
+[12/27/2023 13:21] david_enim
+I think that's a generic question beyond the scope of this particular audit. Maybe look at the relevant stackoverflow/forums?
+
+
+[12/27/2023 13:24] sweetcat0118
+lol is it your project really?
+
+
+[12/27/2023 13:24] sweetcat0118
+Why dont you explain me for that?
+
+
+[12/27/2023 13:24] sweetcat0118
+Is it so difficult for you?
+
+
+[12/27/2023 13:27] 0x3b
+get WSL and run the test on it
+
+
+[12/27/2023 13:28] sweetcat0118
+So I should use wsl???
+no way for windows?
+
+
+[12/27/2023 13:29] 0x3b
+generally yes, and even if you get it running on windows (somehow) it won't perform as good
+
+
+[12/27/2023 13:30] sweetcat0118
+got it, thx
+
+{Reactions}
+❤️ 
+
+[12/27/2023 16:14] .bugzyvonbuggernaut
+The README in Tokenomics suggests that `forge test --hh -vv` will run the Foundry tests, but the command outputs: "Nothing to compile".
+
+
+[12/27/2023 16:27] danhapo
+@david_enim Your conference will be start soon?
+
+
+[12/27/2023 16:28] david_enim
+Yes, link here: https://discord.com/channels/810916927919620096/1187054573601427456/1189265404636430346
+
+
+[12/27/2023 16:32] kupermind
+Try to use a specific version of the forge build, as the one from the CI:
+https://github.com/valory-xyz/autonolas-tokenomics/blob/1cb1a0cbef4d04d940094cd00082b1da052d3814/.github/workflows/workflow.yaml#L27-L30
+
+
+[12/28/2023 00:47] .bugzyvonbuggernaut
+Didn't work. I can run `forge test --hh -vv` on the `autonolas-tokenomics` repo, but not within tokenomics of the code4rena / competition repository.
+
+
+[12/28/2023 00:48] .bugzyvonbuggernaut
+The problem has to do with Foundry's Git integrations and because "/tokenomics" is nested / not at root level
+
+
+[12/28/2023 00:48] .bugzyvonbuggernaut
+The quick fix is to run `git init` inside `tokenomics` and then the Foundry tests will run.
+
+{Reactions}
+🙏 (2) 
+
+[12/28/2023 01:38] kupermind
+Thanks for letting us know
+
+{Reactions}
+👍 
+
+[12/28/2023 11:06] 0xjuntao
+why am I facing this error when input `anchor build`: ```Error: No such file or directory (os error 2)```
+
+
+[12/28/2023 11:06] 0xjuntao
+@kupermind
+
+
+[12/28/2023 11:14] kupermind
+I can't really say without the context. What is your rust / anchor / solana environment?
+
+
+[12/28/2023 11:15] kupermind
+have you done `yarn` BTW?
+
+
+[12/28/2023 11:20] david_enim
+📹  https://drive.google.com/file/d/1b0O1h1bphtRwhna23TCLlMZYQujJsKTj/view?usp=sharing - yesterday's Q&A recording
+
+{Embed}
+https://drive.google.com/file/d/1b0O1h1bphtRwhna23TCLlMZYQujJsKTj/view?usp=sharing
+C4R Olas Q&A (2023-12-27 16:31 GMT)
+
+{Reactions}
+👍 🫡 
+
+[12/28/2023 14:03] jovi6132
+Nice one, ty
+
+
+[12/28/2023 14:05] jovi6132
+https://www.youtube.com/watch?v=oznC6JXb7EQ has helped me to quickly get some context. Might help someone else
+
+{Embed}
+thefett
+https://www.youtube.com/watch?v=oznC6JXb7EQ
+protocol deep dives w/ thefett - autonolas
+Today I talk to david about autonolas, a protocol at the interesection of web3 and ai.  They use autonomous agents to automate tasks and actions done on-chain.  At first I was skeptical because it sounds like a lot of hype, but it was a great discussion talking what can/can't be automated and where the space is going with regard to autonomous ac...
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/maxresdefault-05654.jpg
+
+{Reactions}
+❤️ (3) 
+
+[12/28/2023 14:40] jovi6132
+Started a thread.
+
+
+[12/28/2023 16:44] thank_you_
+Question for devs:
+
+What's the intent of having annotations in `liquidity_lockbox.sol`. That's new to me coming from a mostly Solidity background. Also, what is the expected solidity version for `liquidity_lockbox.sol`? Thanks for your time!
+
+
+[12/28/2023 17:52] kupermind
+The code is written on Solang, that translates a Solidity-like code into the Solana compatible one. Please refer to Solang for more information about annotations:
+https://solang.readthedocs.io/en/v0.3.3/
+
+{Reactions}
+👍 
+
+[12/29/2023 07:00] guy_in0xnito
+Do people acquire Olas token when they provide liquidity like uniswap?
+
+
+[12/29/2023 07:22] kupermind
+There are bonding products where people provide their LP tokens for OLAS after some vesting period defined by the product
+
+
+[12/29/2023 07:27] guy_in0xnito
+So is it like 
+User deposit liquidity in protocol -> get LP tokens -> deposit LP tokens -> get OLAS(utility token)
+
+And if users want to participate in governance they can lock this OLAS. Token for max of 4 years for creating proposal
+
+{Reactions}
+🙏 
+
+[12/29/2023 07:27] guy_in0xnito
+And people with veOlas can vote for the proposal?
+
+
+[12/29/2023 07:51] kupermind
+Yes, this is all accurate
+
+{Reactions}
+👍🏻 
+
+[12/29/2023 07:58] nmirchev8
+Hey, who would have access CM multisig?
+
+
+[12/29/2023 08:01] kupermind
+Hey, are you asking who are the owners?
+
+
+[12/29/2023 08:05] nmirchev8
+Yeah. I read that the multisig would be community owned and I was wondering how is that possible with a large community, or I did not understand correctly?
+
+
+[12/29/2023 08:21] sweetcat0118
+@kupermind Is Olas token contract a upgradable contract?
+
+
+[12/29/2023 08:22] kupermind
+No it's not upgradable
+
+
+[12/29/2023 08:22] sweetcat0118
+got it thx
+
+{Reactions}
+🙏 
+
+[12/29/2023 08:23] kupermind
+It's owned by initial members of the community, however new members can be added
+
+{Reactions}
+✅ 
+
+[12/29/2023 08:36] nmirchev8
+Olas and veOlas are used only on Mainned, right?
+
+
+[12/29/2023 08:43] david_enim
+yes. The bridged versions of OLAS (https://olas.network/olas-token#get-olas) are not developed by us (come from bridge factories).
+
+{Reactions}
+✅ 
+
+[12/29/2023 10:39] guy_in0xnito
+As a community you mean 
+People who are initially locking up  OLAS token
+
+
+[12/29/2023 12:30] nmirchev8
+So actions, which are planned to be available for community multisig must be initiated trough GuardCM?
+
+If we have transaction X to be executed to the Gov and CM initialise it:
+Multisig wallet initiate transaction => GuardCM check the params => intended transaction execution?
+
+
+[12/29/2023 12:46] kupermind
+This is correct
+
+
+[12/29/2023 12:57] sweetcat0118
+@kupermind anchor build error in lockbox(solana)
+
+
+[12/29/2023 12:58] sweetcat0118
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/image-B7D29.png
+
+
+[12/29/2023 12:58] sweetcat0118
+what is the reason?
+
+
+[12/29/2023 13:02] sweetcat0118
+How can I test lockbox-solana?
+
+
+[12/29/2023 13:10] kupermind
+Have you followed described steps? Like `yarn`, etc.?
+
+
+[12/29/2023 13:35] c0pp3rscr3w3r
+https://github.com/code-423n4/2023-12-autonolas/blob/2a095eb1f8359be349d23af67089795fb0be4ed1/tokenomics/contracts/Depository.sol#L180-L182
+Hi wat are these comments
+
+{Embed}
+https://github.com/code-423n4/2023-12-autonolas/blob/2a095eb1f8359be349d23af67089795fb0be4ed1/tokenomics/contracts/Depository.sol
+2023-12-autonolas/tokenomics/contracts/Depository.sol at 2a095eb1f8...
+Contribute to code-423n4/2023-12-autonolas development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/65c0f47a-3bd4-4a2a-aded-610befcd3858-B24CE
+
+
+[12/29/2023 13:38] trachev
+Hi, where can we find the ServiceRegistry.sol contract?
+
+
+[12/29/2023 13:42] kupermind
+These are scribble annotations for the Harvey fuzzer (Consensys)
+
+
+[12/29/2023 13:43] kupermind
+Check out references from the `registries/README.md` file to the original `autonolas-registries` repo
+
+
+[12/29/2023 13:58] sweetcat0118
+yeah
+
+
+[12/29/2023 13:59] sweetcat0118
+I cannot find anchor config in lockbox
+
+
+[12/29/2023 13:59] sweetcat0118
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/image-F534F.png
+
+{Reactions}
+psyduck 
+
+[12/29/2023 14:01] sweetcat0118
+I can find sol files instead of rs file in lockbox.
+
+
+[12/29/2023 14:01] sweetcat0118
+@kupermind what is wrong?
+
+
+[12/29/2023 14:02] kupermind
+sol files are there because it's written on Solang!
+
+
+[12/29/2023 14:02] kupermind
+what are your versions of solana / anchor / rust?
+
+
+[12/29/2023 14:10] trachev
+Thanks! Sent a DM
+
+
+[12/29/2023 14:10] sweetcat0118
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/image-C44B6.png
+
+
+[12/29/2023 14:12] sweetcat0118
+@kupermind it is my env on ubuntu
+
+
+[12/29/2023 14:25] kupermind
+andrey@v510:~/valory/2023-12-autonolas/lockbox-solana$ solana --version
+solana-cli 1.17.7 (src:fca44b78; feat:3073089885, client:SolanaLabs)
+andrey@v510:~/valory/2023-12-autonolas/lockbox-solana$ rustc --version
+rustc 1.70.0 (90c541806 2023-05-31)
+andrey@v510:~/valory/2023-12-autonolas/lockbox-solana$ solang --version
+solang version v0.3.3
+andrey@v510:~/valory/2023-12-autonolas/lockbox-solana$ anchor --version
+anchor-cli 0.29.0
+andrey@v510:~/valory/2023-12-autonolas/lockbox-solana$ yarn
+yarn install v1.22.19
+warning ../../../package.json: No license field
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning " > @solana/spl-token@0.3.8" has unmet peer dependency "@solana/web3.js@^1.47.4".
+[4/4] Building fresh packages...
+Done in 32.99s.
+andrey@v510:~/valory/2023-12-autonolas/lockbox-solana$ anchor build
+info: contract liquidity_lockbox uses at least 3188 bytes account data
+info: Generating LLVM IR for contract liquidity_lockbox with target Solana
+info: Saving binary /home/andrey/valory/2023-12-autonolas/lockbox-solana/target/deploy/liquidity_lockbox.so for contract liquidity_lockbox
+info: Generating Anchor metadata for contract liquidity_lockbox
+info: Saving metadata /home/andrey/valory/2023-12-autonolas/lockbox-solana/target/idl/liquidity_lockbox.json for contract liquidity_lockbox
+
+
+[12/29/2023 14:26] kupermind
+@Sweet Dream this is an ubuntu env as well, check if you need to install solang, although it's supposedly included in the anchor 0.29.0, so I can't help more than that
+
+
+[12/29/2023 14:33] kupermind
+refer to this script and run if needed to reinstall all the correct versions:
+https://github.com/code-423n4/2023-12-autonolas/blob/main/lockbox-solana/setup-env.sh
+
+
+[12/29/2023 14:36] sweetcat0118
+Which version of node are you using?
+
+
+[12/29/2023 14:36] sweetcat0118
+I also have an issue in tokenomics
+
+
+[12/29/2023 14:36] sweetcat0118
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - olas-dec21 [1187054573601427456].txt_Files/image-A5628.png
+
+
+[12/29/2023 14:40] kupermind
+all is in the readme
+
+
+[12/29/2023 14:42] kupermind
+@everybody: I believe it is clear and was confirmed by many of you that all the packages compile and run tests correctly (except for the forge issue that was described earlier and thanks again for the heads up). Thus, all the compilation questions will be ignored to cut audit-unrelated questions and save up on time spent on that.
+
+Please read README-s across all the subfolders and the major one, it's all in there.
+
+{Reactions}
+🤝 
+
+[12/29/2023 14:53] sweetcat0118
+got it
+
+
+[12/29/2023 15:50] guy_in0xnito
+@kupermind can you please clarify this
+
+
+[12/29/2023 15:59] kupermind
+These are just some DAO members
+
+
+[12/29/2023 16:12] guy_in0xnito
+People who hold veolas ?
+
+
+[12/29/2023 16:21] kupermind
+There's no such requirement, or any other about token holdings. This is a standard multisig with whatever accounts held by DAO members.
+
+
+[12/29/2023 17:02] guy_in0xnito
+Are the dao members or an particular address which has administrative accesss decided by protocol?
+
+
+[12/29/2023 17:28] kupermind
+No, only the CM has a direct PROPOSER role for the Timelock, that's why the GuardCM was implemented to control it
+
+
+[12/29/2023 23:04] guy_in0xnito
+Ig i have to go through the codebase then would get some context
+
+
+[12/30/2023 05:46] zhaojie
+Will the donor receive some kind of token, or just participate in the donation?
+
+
+[12/30/2023 05:49] zhaojie
+Is the main source of funding in the protocol donation or LP Token?
+
+
+[12/30/2023 05:57] kupermind
+Just participate in donation
+
+
+[12/30/2023 05:58] kupermind
+Protocol does not hold any of the donations, they are all split between devs. LPs on another hand are owned by the Treasury.
+
+
+[12/30/2023 06:00] zhaojie
+okay ,I see thanks
+
+
+[12/30/2023 13:45] guy_in0xnito
+What is the difference between agent and component?
+Is component a part of agent?
+
+
+[12/30/2023 13:59] kupermind
+Correct, agent has to have at least one component
+
+
+[12/30/2023 14:00] guy_in0xnito
+So where do they actually differ 
+Since both of them actually represent Nft ?
+
+
+[12/30/2023 14:33] kupermind
+Configurations / setup. For the scope of the audit and to save on your time I suggest to consider two things:
+1. Each of the components / agents have a unique ID and their own NFT contracts;
+2. It is irrelevant for the on-chain routines what's in the NFT metadata.
+
+The internals of components / agents is such a broad subject that it would take up all the remaining time to understand that.
+
+
+[12/30/2023 14:35] kupermind
+Components are a code primitive based on just pure code or including other components. Agents include code and are based on at least one component. Services are based on complete agents and define their interactions via the configuration wrapped into the configuration hash.
+
+
+[12/30/2023 14:41] guy_in0xnito
+Thanks got it
+
+
+[12/30/2023 16:12] 0xnirlin
+How much relevant is whitepaper to current audit scope
+
+
+[12/30/2023 17:26] kupermind
+Pretty much follows the whitepaper
+
+
+[12/31/2023 01:26] twcctop
+where can I find  deployed contract addresses ?
+
+
+[12/31/2023 02:13] jovi6132
+https://docs.autonolas.network/protocol/technical_overview/#contract-addresses_1
+
+{Embed}
+https://docs.autonolas.network/protocol/technical_overview/
+Technical overview - Autonolas Developer Documentation
+Developer documentation of Autonolas ecosystem products.
+
+{Reactions}
+10_10 
+
+[12/31/2023 14:05] caventa
+Can someone please explain epsilonRate? 🙏
+
+
+[12/31/2023 14:28] kupermind
+It's a limiting possible deviation from the default discount factor value. Set as 10% initially.
+
+
+[12/31/2023 15:00] jovi6132
+Hi! Are the Autonolas Deployer and contract's owner multisigs?
+
+
+[12/31/2023 15:23] 0xnirlin
+what is the purpose of lockbox solana contract?
+
+
+[12/31/2023 16:04] kupermind
+Contracts owner is the Timelock governed by the GovernorOLAS, or the DAO
+
+{Reactions}
+👍 
+
+[12/31/2023 16:06] kupermind
+Lock LP NFTs provided on Solana and issue a corresponding bridged tokens in exchange in order to transfer to L1 to participate in bonding
+
+
+[12/31/2023 17:19] jovi6132
+Thanks!
+
+
+[01/01/2024 00:48] guy_in0xnito
+what are the dependency associated with agents/component?
+
+
+[01/01/2024 05:55] kupermind
+Other components
+
+{Reactions}
+✅ 
+
+[01/01/2024 18:46] ev_om
+Where exactly does GuardCM fit in the architecture? `checkTransaction` doesn't submit the transaction so if the CM has a direct PROPOSER role for the Timelock why can't they just schedule any tx?
+
+
+[01/02/2024 04:18] 0x_white_devil
+Hi Guys, Could anyone pls explain `_checkpoint()` why and how it used in `veOLAS.sol` Realy don't know about those maths. Any resoures to learn those.
+
+
+[01/02/2024 05:14] kupermind
+CM is a standard Safe multisig version 1.3.0, thus each of its `execTransaction()` calls is subject to the guard check:
+https://github.com/safe-global/safe-contracts/blob/186a21a74b327f17fc41217a927dea7064f74604/contracts/GnosisSafe.sol#L147-L167
+
+{Reactions}
+👍 
+
+[01/02/2024 05:15] kupermind
+The contract is based on the VotingEscrow by Curve. There are plenty of references inside the contract in comments and README.
+
+
+[01/02/2024 07:42] dimitar.mitev
+Hi,
+Is the address of the manager variable will be different of the address of owner variable in the *Registry contracts?
+
+
+[01/02/2024 10:12] kupermind
+Hi, yes, we use the core-periphery model, and so the interaction with the end user is done via the registries manager contract
+
+{Reactions}
+✅ 
+
+[01/02/2024 10:34] ev_om
+@kupermind sent you a friend request
+
+
+[01/02/2024 10:48] kupermind
+Please just send messages directly
+
+
+[01/02/2024 16:20] moray5554
+i don`t really understand tokenomics mechanic - i'm able to buy OLAS with discount in case if i providing liquidity pairs to autonolas protocol pools or in case if i providing LP tokens of any DEXs where i provided some whitelisted pair of OLAS-x as liquidity?
+and are there any limitation for such kind of funding Autonolas?
+
+
+[01/03/2024 01:20] krace_h
+@kupermind please check DM
+
+
+[01/03/2024 05:19] kupermind
+I'm not seeing you in DMs
+
+
+[01/03/2024 05:24] krace_h
+Sent again🤣
+
+
+[01/03/2024 05:39] whoismxuse
+Please check thread @kupermind
+
+
+[01/03/2024 06:05] kupermind
+https://code4rena.notion.site/Communicating-with-Code4rena-wardens-notes-for-engineers-f41c48624c3a459dbdfe119712020d0c
+
+
+[01/03/2024 09:16] moray5554
+what is effective bond in tokenomics?
+
+
+[01/03/2024 09:18] kupermind
+The total accumulated amount that can be used agains bodning products. The unused amount during each epoch is added to the `effectiveBond`.
+
+{Reactions}
+❤️ 
+
+[01/03/2024 09:19] moray5554
+thank you
+
+
+[01/04/2024 09:22] ch_301
+@kupermind please check DM
+
+
+[01/04/2024 12:11] mussucal
+What kind of info is hashed and passed during create agent ?
+
+
+[01/04/2024 12:49] kupermind
+Agent setup / configuration and the link to the code
+
+
+[01/04/2024 16:41] mussucal
+Where is the staking/slashing mechanism ?
+
+
+[01/04/2024 17:56] kupermind
+They are not part of this contest
+
+
+[01/04/2024 21:17] lsaudit
+hey @kupermind  - please check DMs in your spare time
+
+
+[01/05/2024 07:50] jacobmartin0406
+@kupermind please check DM, if you have some time😀
+
+
+[01/05/2024 13:27] bulletprime.
+Hi
+Been trying to clone this repo on my local terminal for days now, but it keeps showing me the same error
+“Cloning into '2023-12-autonolas
+...
+remote: Enumerating objects: 2181,
+done.
+remote: Counting objects: 106% (185/185), done. remote: Compressing objects: 100% (141/141), done.
+error: RPC failed; curl 92 HTTP/2 stream ® was not closed cleanly: CANCEI error: 3221 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet fatal: early EOF
+fatal: fetch-pack: invalid index-pack output” 
+Is anyone facing the same challenge and how did you go about it..
+
+
+[01/05/2024 13:53] ev_om
+Try `git clone --depth 1 https://github.com/code-423n4/2023-12-autonolas`
+
+{Reactions}
+🫡 
+
+[01/06/2024 14:02] lsaudit
+@kupermind  hey, i've DMed you once again, I'd appreciate if you could take a look
+
+
+[01/06/2024 14:08] kupermind
+Already replied
+
+
+[01/07/2024 06:45] mussucal
+What is the control flow across Timelock, GuardCM and CM ??
+
+
+[01/07/2024 12:34] kupermind
+CM is able to schedule calls in the Timelock, and those are guarded by the GuardCM contract
+
+
+[01/07/2024 12:34] 7a4raf
+What happens to the olas funds locked inside the veOLAS contract after the lock period is over? and would the system be affected if a user does not withdraw his funds?
+
+
+[01/07/2024 12:36] kupermind
+Nothing, they remain in veOLAS until the user withdraws them. Their voting power is zero at that point of time. The system is not affected as that voting power is not accounted for anymore.
+
+
+[01/07/2024 12:37] 7a4raf
+even if they remain until another voting period?
+
+
+[01/07/2024 12:38] 7a4raf
+I mean would they automatically have a voting power if another vote is running and they are in the contract?
+
+
+[01/07/2024 12:38] kupermind
+If the lock is expired, then no, they have zero voting power
+
+
+[01/07/2024 12:38] 7a4raf
+all clear, thanks
+
+{Reactions}
+🙏 
+
+[01/07/2024 13:32] moray5554
+points (checkpoints) are some kinda of stages which depends of tokens lock-time increasing ur voting power?
+
+
+[01/07/2024 14:11] para8956
+Isn't it a bit  confusing to name getCurrentPriceLP a method that return the amount of only one of the token of the pair per LP token ? Because then I don't understand how bonding price is calculated. If you deposit 400 OLAS and 1 ETH to get one LP token and the bonding product price this LP Token at 400 OLAS what's the point of the discount if it is based on half the value of the LP token ?
+
+
+[01/07/2024 14:12] kupermind
+They serve as a means of interpolating voting power
+
+{Reactions}
+❤️ 
+
+[01/07/2024 14:13] kupermind
+This function is not used in order to set priceLP. You have a point on that one as the function returns only the OLAS part of LP calculation based on current reserves and a total supply. In a priceLP calculation we always multiply by 2.
+
+
+[01/07/2024 14:14] para8956
+Ok thanks for the reply. Got confused because in the test the value is taken as is to create products!
+
+{Reactions}
+🙏 
+
+[01/07/2024 16:35] mussucal
+Any resource to understand maths behind _checkpoint() ??
+
+
+[01/07/2024 17:28] kupermind
+VotingEscrow by Curve finance. They have a PDF of their math
+
+
+[01/07/2024 19:10] sp1cymeatball
+@kupermind, hi! Anyone can create a service in the ServiceRegistry?
+
+
+[01/08/2024 02:35] kupermind
+Hi, yes
+
+{Reactions}
+thankyou 
+
+[01/08/2024 18:26] sp1cymeatball
+@kupermind is the Tokenomics contract already deployed in the mainnet?
+
+
+[01/08/2024 18:28] sp1cymeatball
+nvm found it
+
+
+[01/08/2024 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺wardens The **Olas** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Keep an eye on #📢announcements for regular updates on how the audit is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping a Contest-Admin if you have questions along the way!
+
+
+[01/08/2024 20:06] david_enim
+Thanks wardens for your contributions - really appreciate it!
+
+{Reactions}
+💜 (5) 
+
+[01/08/2024 20:11] lsaudit
+how many submissions?
+
+
+[01/08/2024 20:25] ev_om
+449
+
+{Reactions}
+thankyou (6) 
+
+[01/08/2024 20:43] benrai
+Where do you see this? There is no announcement with the link to the findings repo yet. Or am I missing something? 🤔
+
+
+[01/08/2024 20:44] ev_om
+They posted it in the vanialla backstage channel, not in the announcements
+
+{Reactions}
+👍 (4) 
+
+[01/10/2024 07:00] giraffe0x
+Anyone has a link to the findings repo?
+
+
+[01/10/2024 08:21] benrai
+You do not have the backstage role so you do not have access. The links are posted in the backstage-announcement channel
+
+{Reactions}
+👍 
+
+[01/10/2024 18:08] bloqarl
+@kupermind @david_enim @Pi @andreyleb Can I DM any of you? I have a proposal to improve Olas codebase's security long term.
+
+
+[01/19/2024 15:31] lukke8717
+Does anyone know how much you can earn for average Gas rapport and Low rapport?
+
+
+[01/22/2024 00:54] unclejeff4407
+i don't think it's that simple
+
+
+[01/22/2024 00:54] unclejeff4407
+it depends on quality, numbers of valid submissions, prize pool, number of dupes etc
+
+{Reactions}
+👌 
+
+[01/26/2024 15:44] 0x11singh99
+is this coming today 🙃  ?
+
+
+[01/28/2024 21:24] 7a4raf
+I don't think so 😂
+Give it one or two more weeks
+
+{Reactions}
+😂 
+
+[01/29/2024 10:56] _paperparachute
+🤑 🎉  Awards for **Olas**:
+
+$29,515.83 USDC » @EV_om 
+$20,540.04 USDC » @hash 
+$4,185.04 USDC » @erebus 
+$3,690.64 USDC » @BugzyVonBuggernaut 
+$2,735.23 USDC » @hunter_w3b 
+$830.39 USDC » @HChang26 
+$830.39 USDC » c0pp3rscr3w3r 
+$793.48 USDC » @IllIllI 
+$769.38 USDC » @lsaudit 
+$573.29 USDC » @0xAnah 
+$438.30 USDC » @Sathish9098 
+$437.09 USDC » @0xTheC0der 
+$385.84 USDC » @joaovwfreire 
+$385.84 USDC » @peanuts 
+$380.63 USDC » @oakcobalt 
+$363.94 USDC » @ICP 
+$358.73 USDC » @adeolu 
+$358.73 USDC » @thank_you 
+$358.73 USDC » windowhan001 
+$323.61 USDC » @0xA5DF 
+$271.14 USDC » @7ashraf 
+$271.14 USDC » @slvDev 
+$74.36 USDC » @0x11singh99 
+$52.46 USDC » @JCK 
+$52.46 USDC » @Raihan 
+$52.46 USDC » @alphacipher 
+$52.46 USDC » @c3phas 
+$52.46 USDC » @naman1778 
+$21.90 USDC » @0xMilenov 
+$21.90 USDC » @Bauchibred 
+$21.90 USDC » @Kaysoft 
+$21.90 USDC » SpicyMeatball 
+$21.90 USDC » @cheatc0d3 
+$21.90 USDC » @imare 
+$21.90 USDC » @immeas 
+$21.90 USDC » @lil_eth 
+$21.90 USDC » @para8956 
+$21.90 USDC » @rvierdiiev 
+$21.90 USDC » @trachev
+
+🏁 Findings summary
+--------------------------------------—
+High risk findings: 5 unique (10 total)
+Med risk findings: 5 unique (13 total)
+Gas reports: 11 (Best: 0xAnah)
+QA reports: 25 (Best: IllIllI)
+Advanced analysis reports: 5 (Best: hunter_w3b)
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+*Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.*
+
+{Reactions}
+🎉 (7) 
+
+[01/29/2024 10:59] slavcheww
+@EV_om Congrats :hi5:
+
+{Reactions}
+❤️ 
+
+[01/29/2024 11:00] 7a4raf
+OMMGG🔥🔥🔥🔥🔥
+
+
+[01/29/2024 11:02] 7a4raf
+Congratssss everyone🔥🔥🔥❤️❤️
+
+{Reactions}
+❤️ 
+
+[01/29/2024 11:08] zabihullahazadzoi
+Congrats @hunter_w3b
+
+{Reactions}
+❤️ (2) 
+
+[01/29/2024 11:10] 0xsl1
+congrats @EV_om, you rock🔥
+
+{Reactions}
+❤️ 
+
+[01/29/2024 12:57] ev_om
+Still in disbelief! This was one of my first contests. Thank you to the team and to the entire C4 staff for making this possible 🙌🎉
+
+{Reactions}
+👍 (19) 10_10 (7) ❤️ (7) 
+
+[01/29/2024 15:58] 0xnevi
+@EV_om huges congrats
+
+{Reactions}
+❤️ (2) 
+
+[01/29/2024 16:02] benrai
+Wow, impressive! What is your background?
+
+
+[01/29/2024 17:41] ev_om
+Semi-technical job in web3, I quit a year ago and did maybe 5 months of learning and bounty hunting (with 0 success) full time before this
+
+
+[01/29/2024 18:09] benrai
+Feels good earning the first place in the contest then I imagine! 😆 Congrats again! Hope to see you up on the top in the future 💪
+
+{Reactions}
+❤️ (2) 
+
+[01/29/2024 18:31] ev_om
+It definitely does! Ty ser much appreciated, I hope so too 🙏🫡
+
+
+[01/29/2024 20:42] unclejeff4407
+congrats @EV_om !!
+
+{Reactions}
+❤️ (2) 
+
+[02/02/2024 09:58] 7a4raf
+@IllIllI can you check dm ?
+thank you
+
+{Reactions}
+👍 (2) 
+
+[02/24/2024 02:52] itsmetechjay
+ℹ️ This channel is pending archive.  As a result, any private threads will be permanently deleted on Saturday, 02 March 2024. Please make sure to grab anything you might need from those before then.
+
+
+[02/29/2024 22:35] itsmetechjay
+ℹ️ Reminder: this channel will be deleted in 24 hours.
+
+
+==============================================================
+Exported 238 message(s)
+==============================================================
